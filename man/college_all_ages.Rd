@@ -4,22 +4,22 @@
 \name{college_all_ages}
 \alias{college_all_ages}
 \title{The Economic Guide To Picking A College Major}
-\format{A data frame with 173 rows representing majors and 11 variables:
+\format{A data frame with 173 rows representing majors (all ages) and 11 variables:
 \describe{
   \item{major_code}{Major code, FO1DP in ACS PUMS}
   \item{major}{Major description}
   \item{major_category}{Category of major from Carnevale et al}
   \item{total}{Total number of people with major}
   \item{employed}{Number employed (ESR == 1 or 2)}
-  \item{employed_full_time_year_round}{Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)}
+  \item{employed_fulltime_yearround}{Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)}
   \item{unemployed}{Number unemployed (ESR == 3)}
   \item{unemployment_rate}{Unemployed / (Unemployed + Employed)}
-  \item{median}{Median earnings of full-time, year-round workers}
   \item{p25th}{25th percentile of earnigns}
+  \item{median}{Median earnings of full-time, year-round workers}
   \item{p75th}{75th percentile of earnings}
 }}
 \source{
-See \url{https://github.com/fivethirtyeight/data/tree/master/comma-survey-data}.
+See \url{https://github.com/fivethirtyeight/data/blob/master/college-majors/readme.md}.
 }
 \usage{
 college_all_ages
@@ -29,5 +29,7 @@ The raw data behind the story
 "The Economic Guide To Picking A College Major"
 \url{http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
 }
+\seealso{
+\code{\link{college_grad_students}}, \code{\link{college_recent_grads}}
+}
 \keyword{datasets}
-

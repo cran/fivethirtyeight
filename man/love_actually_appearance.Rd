@@ -6,20 +6,20 @@
 \title{The Definitive Analysis Of 'Love Actually,' The Greatest Christmas Movie Of Our Time}
 \format{A data frame with 71 rows representing scenes and 15 variables:
 \describe{
-  \item{scenes}{} 
-  \item{bill_nighy}{} 
-  \item{keira_knightley}{} 
-  \item{andrew_lincoln}{} 
-  \item{hugh_grant}{} 
-  \item{colin_firth}{} 
-  \item{alan_rickman}{} 
-  \item{heike_makatsch}{} 
-  \item{laura_linney}{} 
-  \item{emma_thompson}{} 
-  \item{liam_neeson}{} 
-  \item{kris_marshall}{} 
-  \item{abdul_salis}{} 
-  \item{martin_freeman}{} 
+  \item{scenes}{}
+  \item{bill_nighy}{}
+  \item{keira_knightley}{}
+  \item{andrew_lincoln}{}
+  \item{hugh_grant}{}
+  \item{colin_firth}{}
+  \item{alan_rickman}{}
+  \item{heike_makatsch}{}
+  \item{laura_linney}{}
+  \item{emma_thompson}{}
+  \item{liam_neeson}{}
+  \item{kris_marshall}{}
+  \item{abdul_salis}{}
+  \item{martin_freeman}{}
   \item{rowan_atkinson}{}
 }}
 \usage{
@@ -31,8 +31,15 @@ The raw data behind the story
 \url{http://fivethirtyeight.com/features/the-definitive-analysis-of-love-actually-the-greatest-christmas-movie-of-our-time/}.
 A table of the central actors in "Love Actually" and which scenes they appear in.
 }
+\examples{
+# To convert data frame to tidy data (long) format, run:
+library(tidyverse)
+library(stringr)
+love_actually_appearance_tidy <- love_actually_appearance \%>\%
+  gather(actor, appears, -c(scenes)) \%>\%
+  arrange(scenes)
+}
 \seealso{
 \code{\link{love_actually_adj}}.
 }
 \keyword{datasets}
-

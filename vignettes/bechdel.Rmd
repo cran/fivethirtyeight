@@ -11,7 +11,7 @@ vignette: |
   %\VignetteEncoding{UTF-8}
 ---
 
-This vignette is based on tidyverse-ifying the R code [here](https://raw.githubusercontent.com/fivethirtyeight/data/master/bechdel/analyze-bechdel.R) and reproducing some of the plots and analysis done in the 538 story entitled "The Dollar-And-Cents Case Against Hollywood’s Exclusion of Women" by Walt Hickey available [here](http://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/).
+This vignette is based on tidyverse-ifying the R code [here](https://raw.githubusercontent.com/fivethirtyeight/data/master/bechdel/analyze-bechdel.R) and reproducing some of the plots and analysis done in the 538 story entitled "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women" by Walt Hickey available [here](http://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/).
 
 Load required packages to reproduce analysis.  Also load the `bechdel` dataset for analysis.
 
@@ -25,7 +25,6 @@ library(stringr)
 library(fivethirtyeight)
 library(ggthemes)
 library(scales)
-data("bechdel")
 # Turn off scientific notation
 options(scipen = 99)
 ```
@@ -113,6 +112,15 @@ ggplot(data = bechdel90_13, mapping = aes(x = log(intgross_2013))) +
 ggplot(data = bechdel90_13, mapping = aes(x = roi_total)) +
   geom_histogram(color = "white", bins = 20) +
   labs(title = "Histogram of ROI")
+```
+
+The previous distributions were skewed, but ROI is so skewed that purposefully limiting the x-axis may reveal a bit more information about the distribution: (Suggested by [Mustafa Ascha](https://github.com/mustafaascha).)
+
+```{r roi-plot2, fig.width = 5, warning = FALSE}
+ggplot(data = bechdel90_13, mapping = aes(x = roi_total)) +
+  geom_histogram(color = "white", bins = 20) +
+  labs(title = "Histogram of ROI") +
+  xlim(0, 25)
 ```
 
 ```{r log-roi-plot, fig.width = 5, warning = FALSE}
