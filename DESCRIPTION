@@ -1,11 +1,11 @@
 Package: fivethirtyeight
 Title: Data and Code Behind the Stories and Interactives at
         'FiveThirtyEight'
-Description: An R library that provides access to the code and data sets
-    published by FiveThirtyEight <https://github.com/fivethirtyeight/data>. Note
-    that while we received guidance from editors at 538, this package is not
-    officially published by 538.
-Version: 0.2.0
+Description: Datasets and code published by the data journalism website 
+    'FiveThirtyEight' available at <https://github.com/fivethirtyeight/data>. 
+    Note that while we received guidance from editors at 'FiveThirtyEight', this 
+    package is not officially published by 'FiveThirtyEight'.
+Version: 0.3.0
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
@@ -13,7 +13,11 @@ Authors@R: c(
     person("Andrew", "Flowers",  role = "ctb"),
     person("Jonathan", "Bouchet",  role = "ctb"),
     person("G. Elliott", "Morris",  role = "ctb"),
-    person("Adam", "Spannbauer",  role = "ctb"))
+    person("Adam", "Spannbauer",  role = "ctb"),
+    person("Pradeep", "Adhokshaja",  role = "ctb"),
+    person("Olivia", "Barrows", role = "ctb"),
+    person("Jojo", "Miller", role = "ctb"),
+    person("Jayla", "Nakayama", role = "ctb"))
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Depends: R (>= 3.2.4)
 License: MIT + file LICENSE
@@ -22,18 +26,23 @@ LazyData: true
 URL: https://github.com/rudeboybert/fivethirtyeight
 BugReports: https://github.com/rudeboybert/fivethirtyeight/issues
 RoxygenNote: 6.0.1
-Suggests: knitr, rmarkdown, dplyr, readr, ggplot2, broom, magrittr,
-        scales, stringr, tidytext, hunspell, ggthemes, lubridate, grid,
-        fmsb, wordcloud, gridExtra, fivethirtyeight, tidyverse
+Suggests: fivethirtyeight, tidyverse, lubridate, stringr, magrittr,
+        knitr, rmarkdown, broom, scales, tidytext, ggthemes, hunspell,
+        grid, fmsb, wordcloud, gridExtra, corrplot, ggraph, igraph,
+        highcharter
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2017-03-14 19:00:54 UTC; rudeboybert
+Packaged: 2017-08-08 04:18:29 UTC; aykim
 Author: Albert Y. Kim [cre],
   Chester Ismay [aut],
   Jennifer Chunn [aut],
   Andrew Flowers [ctb],
   Jonathan Bouchet [ctb],
   G. Elliott Morris [ctb],
-  Adam Spannbauer [ctb]
+  Adam Spannbauer [ctb],
+  Pradeep Adhokshaja [ctb],
+  Olivia Barrows [ctb],
+  Jojo Miller [ctb],
+  Jayla Nakayama [ctb]
 Repository: CRAN
-Date/Publication: 2017-03-15 05:25:14
+Date/Publication: 2017-08-08 04:36:20 UTC
