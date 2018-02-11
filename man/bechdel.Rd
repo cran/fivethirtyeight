@@ -7,7 +7,7 @@
 \format{A data frame with 1794 rows representing movies and 15 variables:
 \describe{
   \item{year}{Year of release}
-  \item{imdb}{Text to append \url{http://www.imdb.com/title/} to for IMDB url. E.g. \url{http://www.imdb.com/title/tt1711425}}
+  \item{imdb}{Text to construct IMDB url. Ex: \url{http://www.imdb.com/title/tt1711425}}
   \item{title}{Movie test}
   \item{test}{bechdel test result (detailed, with discrepancies indicated)}
   \item{clean_test}{bechdel test result (detailed): \code{ok} = passes test, \code{dubious}, \code{men} = women only talk about men, \code{notalk} = women don't talk to each other, \code{nowomen} = fewer than two women }
@@ -31,7 +31,7 @@ bechdel
 \description{
 The raw data behind the story
 "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women"
-\url{http://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/}.
+\url{https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/}.
 }
 \details{
 A vignette of an analysis of this dataset using the \code{tidyverse} can be found on \href{https://CRAN.R-project.org/package=fivethirtyeight/vignettes/bechdel.html}{CRAN} or by running:

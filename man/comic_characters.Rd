@@ -36,6 +36,8 @@ comic_characters
 \description{
 The raw data behind the story
 "Comic Books Are Still Made By Men, For Men And About Men"
-\url{http://fivethirtyeight.com/features/women-in-comic-books/}.
+\url{https://fivethirtyeight.com/features/women-in-comic-books/}.
+An analysis using this data was contributed by Jonathan Bouchet as a package vignette at
+\url{http://fivethirtyeight-r.netlify.com/articles/comics_gender.html}.
 }
 \keyword{datasets}

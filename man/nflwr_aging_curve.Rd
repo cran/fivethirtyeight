@@ -6,9 +6,9 @@
 \title{The Football Hall Of Fame Has A Receiver Problem}
 \format{A data frame with 24 rows representing National Football League wide receiver ages and 3 variables:
 \describe{
-  \item{age_from}{Beginning age} 
-  \item{age_to}{Ending age} 
-  \item{trypg_change}{Change in TRY per game from one age-year to next} 
+  \item{age_from}{Beginning age}
+  \item{age_to}{Ending age}
+  \item{trypg_change}{Change in TRY per game from one age-year to next}
 }}
 \source{
 Unknown
@@ -19,6 +19,6 @@ nflwr_aging_curve
 \description{
 The raw data behind the story
 "The Football Hall Of Fame Has A Receiver Problem"
-\url{http://fivethirtyeight.com/features/the-football-hall-of-fame-has-a-receiver-problem/}.
+\url{https://fivethirtyeight.com/features/the-football-hall-of-fame-has-a-receiver-problem/}.
 }
 \keyword{datasets}

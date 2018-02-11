@@ -12,7 +12,7 @@
 
 <meta name="author" content="Albert Y. Kim, Chester Ismay, and Jennifer Chunn" />
 
-<meta name="date" content="2017-08-08" />
+<meta name="date" content="2018-02-11" />
 
 <title>fivethirtyeight Package</title>
 
@@ -32,7 +32,7 @@
 
 <h1 class="title toc-ignore"><code>fivethirtyeight</code> Package</h1>
 <h4 class="author"><em>Albert Y. Kim, Chester Ismay, and Jennifer Chunn</em></h4>
-<h4 class="date"><em>2017-08-08</em></h4>
+<h4 class="date"><em>2018-02-11</em></h4>
 
 
 
@@ -60,28 +60,41 @@
 <div id="guidelines" class="section level2">
 <h2>Guidelines</h2>
 <p>In order to make the data easily accessible to R novices, we pre-process the original data sets as they exist in the <a href="https://github.com/fivethirtyeight/data">538 GitHub repository</a> to adhere to the following guidelines:</p>
-<ul>
-<li>Naming conventions for data frames and variables:
-<ul>
-<li>Rule of thumb: no more than 20 characters max</li>
-<li>All lower case</li>
-<li>Use underscores instead of CamelCase or spaces</li>
-</ul></li>
-<li>Variables:
-<ul>
-<li>Factors vs characters:
-<ul>
-<li>Ordinal categorical variables are <code>factor</code> with the intuitive ordering of <code>levels</code>. We did this to ensure barplots and boxplots would display in an intuitive order.</li>
-<li>Regular categorical variables are left as <code>character</code> vectors.</li>
-</ul></li>
-<li>Convert date variables that are beyond just <code>year</code> to <a href="http://www.epochconverter.com/">POSIX date</a> objects using the <a href="https://CRAN.R-project.org/package=lubridate/vignettes/lubridate.html">lubridate</a> package. That way users can easily create time series plots. Example:
-<ul>
-<li>If only a <code>year</code> variable exits, then we leave it as is.</li>
-<li>If there are <code>year</code> and <code>month</code> variables, we convert them POSIX date objects as <code>year-month-01</code>.</li>
-<li>If there are <code>year</code>, <code>month</code>, and <code>day</code> variables, we convert them POSIX date objects as <code>year-month-day</code>.</li>
-</ul></li>
-</ul></li>
-</ul>
+<ol style="list-style-type: decimal">
+<li><strong>Naming conventions for data frame and variable names</strong>:
+<ol style="list-style-type: decimal">
+<li>Whenever possible, all names should be no more than 20 characters long. Exceptions to this rule exist when shortening the names to less than 20 characters would lead to a loss of information.</li>
+<li>Use only lower case characters and replace all spaces with underscores. This format is known as <code>snake_case</code> and is an alternative to <code>camelCase</code>.</li>
+<li>In the case of variable (column) names within a data frame, use underscores instead of spaces.</li>
+</ol></li>
+<li><strong>Variables identifying observational units</strong>:
+<ol style="list-style-type: decimal">
+<li>Any variables uniquely identifying each observational unit should be in the left-hand columns.</li>
+</ol></li>
+<li><strong>Dates</strong>:
+<ol style="list-style-type: decimal">
+<li>If only a <code>year</code> variable exists, then it should be represented as a numerical variable.</li>
+<li>If there are <code>year</code> and <code>month</code> variables, then convert them to <code>Date</code> objects as <code>year-month-01</code>. In other words, associate all observations from the same month to have a <code>day</code> of <code>01</code> so that a correct <code>Date</code> object can be assigned.</li>
+<li>If there are <code>year</code>, <code>month</code>, and <code>day</code> variables, then convert them to <code>Date</code> objects as <code>year-month-day</code>.</li>
+</ol></li>
+<li><strong>Ordered Factors, Factors, Characters, and Logicals</strong>:
+<ol style="list-style-type: decimal">
+<li>Ordinal categorical variables are represented as <code>ordered</code> factors.</li>
+<li>Categorical variables with a fixed and known set of levels are represented as regular <code>factor</code>s.</li>
+<li>Categorical variables whose possible levels are either unknown or of a very large number are represented as <code>character</code>s.</li>
+<li>Any “yes/no” character encoding of binary variables is converted to <code>TRUE/FALSE</code> logical variables.</li>
+</ol></li>
+<li><strong>Tidy data format</strong>:
+<ol style="list-style-type: decimal">
+<li>Whenever possible, save all data frames in <a href="http://vita.had.co.nz/papers/tidy-data.html">“tidy” data</a> format:
+<ol style="list-style-type: lower-alpha">
+<li>Each variable forms a column.</li>
+<li>Each observation forms a row.</li>
+<li>Each type of observational unit forms a table.</li>
+</ol></li>
+<li>If converting the raw data to “tidy” data format alters the dataset too much, then make the code to convert to tidy format easily accessible in the help file.</li>
+</ol></li>
+</ol>
 <p><strong>Note</strong>: The code used to pre-process the data can be found on the <a href="https://github.com/rudeboybert/fivethirtyeight/tree/master/data-raw">GitHub repository</a> for the package in the <code>process_data_sets.R</code> files. These can serve as data manipulation/wrangling examples and exercises for more advanced students.</p>
 </div>
 <div id="data-sets" class="section level2">
@@ -121,6 +134,16 @@
 <td align="left"><a href="http://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/" class="uri">http://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>ahca_polls</code></td>
+<td align="left">Why The GOP Is So Hell-Bent On Passing An Unpopular Health Care Bill</td>
+<td align="left">Health Care</td>
+<td align="left">Perry Bacon Jr.</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-06-15</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/why-the-gop-is-so-hell-bent-on-passing-an-unpopular-health-care-bill" class="uri">https://fivethirtyeight.com/features/why-the-gop-is-so-hell-bent-on-passing-an-unpopular-health-care-bill</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>airline_safety</code></td>
 <td align="left">Should Travelers Avoid Flying Airlines That Have Had Crashes in the Past?</td>
 <td align="left">Airline Safety</td>
@@ -130,7 +153,7 @@
 <td align="left">2014-07-18</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/" class="uri">http://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>antiquities_act</code></td>
 <td align="left">Trump Might Be The First President To Scrap A National Monument</td>
 <td align="left">Trump Administration</td>
@@ -140,7 +163,7 @@
 <td align="left">2017-04-27</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/trump-might-be-the-first-president-to-scrap-a-national-monument/" class="uri">https://fivethirtyeight.com/features/trump-might-be-the-first-president-to-scrap-a-national-monument/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>avengers</code></td>
 <td align="left">Joining The Avengers Is As Deadly As Jumping Off A Four-Story Building</td>
 <td align="left">Movies</td>
@@ -149,6 +172,16 @@
 <td align="left">NA</td>
 <td align="left">2015-05-12</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/" class="uri">http://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>bachelorette</code></td>
+<td align="left">How To Spot A Front-Runner On The ‘Bachelor’ Or ‘Bachelorette’</td>
+<td align="left">TV</td>
+<td align="left">Ella Koeze</td>
+<td align="left">Walt Hickey</td>
+<td align="left">NA</td>
+<td align="left">2017-05-22</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-bachelorette/" class="uri">https://fivethirtyeight.com/features/the-bachelorette/</a></td>
 </tr>
 <tr class="even">
 <td align="left"><code>bad_drivers</code></td>
@@ -229,6 +262,26 @@
 <td align="left">NA</td>
 <td align="left">2015-01-30</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/romney-not-running-for-president/" class="uri">http://fivethirtyeight.com/datalab/romney-not-running-for-president/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>candy_rankings</code></td>
+<td align="left">The Ultimate Halloween Candy Power Ranking</td>
+<td align="left">Halloween</td>
+<td align="left">Walt Hickey</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-27</td>
+<td align="left"><a href="http://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/" class="uri">http://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>chess_transfers</code></td>
+<td align="left">American Chess Is Great Again</td>
+<td align="left">Chess</td>
+<td align="left">Oliver Roeder</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-08-08</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/american-chess-is-great-again/" class="uri">https://fivethirtyeight.com/features/american-chess-is-great-again/</a></td>
 </tr>
 <tr class="even">
 <td align="left"><code>classic_rock_raw_data</code></td>
@@ -421,6 +474,16 @@
 <td align="left"><a href="http://fivethirtyeight.com/features/the-fivethirtyeight-international-food-associations-2014-world-cup/" class="uri">http://fivethirtyeight.com/features/the-fivethirtyeight-international-food-associations-2014-world-cup/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>google_trends</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>goose</code></td>
 <td align="left">The Save Ruined Relief Pitching. The Goose Egg Can Fix It.</td>
 <td align="left">MLB</td>
@@ -430,7 +493,7 @@
 <td align="left">NA</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/goose-egg-new-save-stat-relief-pitchers/" class="uri">https://fivethirtyeight.com/features/goose-egg-new-save-stat-relief-pitchers/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>hate_crimes</code></td>
 <td align="left">Higher Rates Of Hate Crimes Are Tied To Income Inequality</td>
 <td align="left">Hate Crimes</td>
@@ -440,7 +503,7 @@
 <td align="left">2017-01-23</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/" class="uri">https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>hiphop_cand_lyrics</code></td>
 <td align="left">Every mention of the 2016 primary candidates in hip-hop songs</td>
 <td align="left">NA</td>
@@ -450,7 +513,7 @@
 <td align="left">2016-07-14</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/clinton-trump-hip-hop-lyrics/" class="uri">https://projects.fivethirtyeight.com/clinton-trump-hip-hop-lyrics/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>hist_ncaa_bball_casts</code></td>
 <td align="left">The NCAA Bracket: Checking Our Work</td>
 <td align="left">March Madness</td>
@@ -460,7 +523,7 @@
 <td align="left">2014-03-27</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/the-ncaa-bracket-checking-our-work/" class="uri">http://fivethirtyeight.com/datalab/the-ncaa-bracket-checking-our-work/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>hist_senate_preds</code></td>
 <td align="left">How The FiveThirtyEight Senate Forecast Model Works</td>
 <td align="left">2014 Midterms</td>
@@ -469,6 +532,16 @@
 <td align="left">NA</td>
 <td align="left">2014-09-17</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/how-the-fivethirtyeight-senate-forecast-model-works/" class="uri">http://fivethirtyeight.com/features/how-the-fivethirtyeight-senate-forecast-model-works/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>index</code></td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left"><code>librarians</code></td>
@@ -521,6 +594,46 @@
 <td align="left"><a href="http://fivethirtyeight.com/datalab/dear-mona-how-many-flight-attendants-are-men/" class="uri">http://fivethirtyeight.com/datalab/dear-mona-how-many-flight-attendants-are-men/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>mediacloud_hurricanes</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>mediacloud_online_news</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mediacloud_states</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>mediacloud_trump</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="odd">
 <td align="left"><code>mlb_as_play_talent</code></td>
 <td align="left">The Best MLB All-Star Teams Ever</td>
 <td align="left">Baseball</td>
@@ -541,6 +654,16 @@
 <td align="left"><a href="http://fivethirtyeight.com/features/the-best-mlb-all-star-teams-ever/" class="uri">http://fivethirtyeight.com/features/the-best-mlb-all-star-teams-ever/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>mlb_elo</code></td>
+<td align="left">The Complete History Of MLB</td>
+<td align="left">NA</td>
+<td align="left">Jay Boice</td>
+<td align="left">Reuben Fischer-Baum</td>
+<td align="left">NA</td>
+<td align="left">2017-11-02</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-mlb/" class="uri">https://projects.fivethirtyeight.com/complete-history-of-mlb/</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>murder_2015_final</code></td>
 <td align="left">A Handful Of Cities Are Driving 2016’s Rise In Murder</td>
 <td align="left">Crime</td>
@@ -550,7 +673,7 @@
 <td align="left">2016-10-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/" class="uri">http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>murder_2016_prelim</code></td>
 <td align="left">A Handful Of Cities Are Driving 2016’s Rise In Murder</td>
 <td align="left">Crime</td>
@@ -559,6 +682,16 @@
 <td align="left">NA</td>
 <td align="left">2016-10-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/" class="uri">http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>nba_carmelo</code></td>
+<td align="left">The Complete History Of The NBA</td>
+<td align="left">NA</td>
+<td align="left">Reuben Fischer-Baum</td>
+<td align="left">Nate Silver</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nba/#warriors" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nba/#warriors</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>nba_draft_2015</code></td>
@@ -589,6 +722,46 @@
 <td align="left">NA</td>
 <td align="left">2014-06-07</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/accurately-counting-nba-tattoos-isnt-easy-even-if-youre-up-close/" class="uri">http://fivethirtyeight.com/datalab/accurately-counting-nba-tattoos-isnt-easy-even-if-youre-up-close/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>nfl_elo</code></td>
+<td align="left">The Complete History of the NFL</td>
+<td align="left">NA</td>
+<td align="left">Reuben Fischer-Baum</td>
+<td align="left">Nate Silver</td>
+<td align="left">Jay Boice, Matthew Conlen</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nfl/" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nfl/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>nfl_elo</code></td>
+<td align="left">2017 NFL Predictions</td>
+<td align="left">NA</td>
+<td align="left">Jay Boice</td>
+<td align="left">Nate Silver</td>
+<td align="left">Gus Wezerek</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/2017-nfl-predictions/" class="uri">https://projects.fivethirtyeight.com/2017-nfl-predictions/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>nfl_fandom_google</code></td>
+<td align="left">How Every NFL Team’s Fans Lean Politically</td>
+<td align="left">NFL</td>
+<td align="left">Neil Paine</td>
+<td align="left">Harry Enten</td>
+<td align="left">Andrea Jones-Rooy</td>
+<td align="left">2017-09-29</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically" class="uri">https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>nfl_fandom_surveymonkey</code></td>
+<td align="left">How Every NFL Team’s Fans Lean Politically</td>
+<td align="left">NFL</td>
+<td align="left">Neil Paine</td>
+<td align="left">Harry Enten</td>
+<td align="left">Andrea Jones-Rooy</td>
+<td align="left">2017-09-29</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically" class="uri">https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically</a></td>
 </tr>
 <tr class="even">
 <td align="left"><code>nfl_fav_team</code></td>
@@ -741,6 +914,16 @@
 <td align="left"><a href="http://fivethirtyeight.com/datalab/do-pulitzers-help-newspapers-keep-readers/" class="uri">http://fivethirtyeight.com/datalab/do-pulitzers-help-newspapers-keep-readers/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>ratings</code></td>
+<td align="left">Al Gore’s New Movie Exposes The Big Flaw In Online Movie Ratings</td>
+<td align="left">Movies</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Walt Hickey</td>
+<td align="left">NA</td>
+<td align="left">2017-09-07</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/al-gores-new-movie-exposes-the-big-flaw-in-online-movie-ratings/" class="uri">https://fivethirtyeight.com/features/al-gores-new-movie-exposes-the-big-flaw-in-online-movie-ratings/</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>riddler_castles2</code></td>
 <td align="left">The Battle For Riddler Nation, Round 2</td>
 <td align="left">The Riddler</td>
@@ -750,7 +933,7 @@
 <td align="left">2017-05-19</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/" class="uri">http://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>riddler_castles</code></td>
 <td align="left">Can You Rule Riddler Nation?</td>
 <td align="left">The Riddler</td>
@@ -759,6 +942,16 @@
 <td align="left">NA</td>
 <td align="left">2017-02-03</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/can-you-rule-riddler-nation/" class="uri">https://fivethirtyeight.com/features/can-you-rule-riddler-nation/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>riddler_pick_lowest</code></td>
+<td align="left">Pick A Number, Any Number</td>
+<td align="left">The Riddler</td>
+<td align="left">Oliver Roeder</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-07-28</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/pick-a-number-any-number/" class="uri">https://fivethirtyeight.com/features/pick-a-number-any-number/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>san_andreas</code></td>
@@ -771,6 +964,16 @@
 <td align="left"><a href="http://fivethirtyeight.com/datalab/the-rock-isnt-alone-lots-of-people-are-worried-about-the-big-one/" class="uri">http://fivethirtyeight.com/datalab/the-rock-isnt-alone-lots-of-people-are-worried-about-the-big-one/</a></td>
 </tr>
 <tr class="even">
+<td align="left"><code>sandy_311</code></td>
+<td align="left">The (Very) Long Tail Of Hurricane Recovery</td>
+<td align="left">NA</td>
+<td align="left">Julia Wolfe</td>
+<td align="left">Oliver Roeder</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/sandy-311/" class="uri">https://projects.fivethirtyeight.com/sandy-311/</a></td>
+</tr>
+<tr class="odd">
 <td align="left"><code>senate_polls</code></td>
 <td align="left">Early Senate Polls Have Plenty to Tell Us About November</td>
 <td align="left">2014 Midterms</td>
@@ -779,6 +982,16 @@
 <td align="left">NA</td>
 <td align="left">2014-04-16</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/" class="uri">http://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>senators</code></td>
+<td align="left">The Worst Tweeter In Politics Isn’t Trump</td>
+<td align="left">The Trump Administration</td>
+<td align="left">Oliver Roeder</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Gus Wezerek</td>
+<td align="left">2017-10-24</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/" class="uri">https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>state_payrolls</code></td>
@@ -851,6 +1064,26 @@
 <td align="left"><a href="https://fivethirtyeight.com/features/for-a-trump-nominee-neil-gorsuchs-record-is-surprisingly-moderate-on-immigration/?ex_cid=538twitter" class="uri">https://fivethirtyeight.com/features/for-a-trump-nominee-neil-gorsuchs-record-is-surprisingly-moderate-on-immigration/?ex_cid=538twitter</a></td>
 </tr>
 <tr class="even">
+<td align="left"><code>trump_approval_poll</code></td>
+<td align="left">How Popular is Donald Trump</td>
+<td align="left">NA</td>
+<td align="left">Aaron Bycoffe</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Nate Silver</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/trump-approval-ratings/" class="uri">https://projects.fivethirtyeight.com/trump-approval-ratings/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>trump_approval_trend</code></td>
+<td align="left">How Popular is Donald Trump</td>
+<td align="left">NA</td>
+<td align="left">Aaron Bycoffe</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Nate Silver</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/trump-approval-ratings/" class="uri">https://projects.fivethirtyeight.com/trump-approval-ratings/</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>trump_news</code></td>
 <td align="left">How Trump Hacked The Media</td>
 <td align="left">2016 Election</td>
@@ -869,6 +1102,86 @@
 <td align="left">NA</td>
 <td align="left">2016-06-21</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-worlds-favorite-donald-trump-tweets/" class="uri">https://fivethirtyeight.com/features/the-worlds-favorite-donald-trump-tweets/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>trumpworld_issues</code></td>
+<td align="left">What the World Thinks of Trump</td>
+<td align="left">The Trump Administration</td>
+<td align="left">Gus Wezerek</td>
+<td align="left">Andrea Jones-Rooy</td>
+<td align="left">NA</td>
+<td align="left">2017-09-18</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/" class="uri">https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>trumpworld_polls</code></td>
+<td align="left">What the World Thinks of Trump</td>
+<td align="left">The Trump Administration</td>
+<td align="left">Gus Wezerek</td>
+<td align="left">Andrea Jones-Rooy</td>
+<td align="left">NA</td>
+<td align="left">2017-09-18</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/" class="uri">https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>tv_hurricanes_by_network</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>tv_hurricanes</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>tv_states</code></td>
+<td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
+<td align="left">Puerto Rico</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">2017-10-12</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>tweets</code></td>
+<td align="left">The Mayweather-McGregor Fight As Told Through Emojis</td>
+<td align="left">Mayweather vs. McGregor</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Oliver Roeder</td>
+<td align="left">Rachel Dottle</td>
+<td align="left">2017-08-30</td>
+<td align="left"><a href="https://fivethirtyeight.com/?post_type=fte_features&amp;p=161615" class="uri">https://fivethirtyeight.com/?post_type=fte_features&amp;p=161615</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>twitter_presidents</code></td>
+<td align="left">The Worst Tweeter In Politics Isn’t Trump</td>
+<td align="left">The Trump Administration</td>
+<td align="left">Oliver Roeder</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Gus Wezerek</td>
+<td align="left">2017-10-24</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/" class="uri">https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>undefeated</code></td>
+<td align="left">Mayweather Is Defined By The Zero Next To His Name</td>
+<td align="left">Mayweather vs. McGregor</td>
+<td align="left">Oliver Roeder</td>
+<td align="left">Brin-Jonathan Butler</td>
+<td align="left">NA</td>
+<td align="left">2017-08-18</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/mayweather-is-defined-by-the-zero-next-to-his-name/" class="uri">https://fivethirtyeight.com/features/mayweather-is-defined-by-the-zero-next-to-his-name/</a></td>
 </tr>
 <tr class="even">
 <td align="left"><code>unisex_names</code></td>

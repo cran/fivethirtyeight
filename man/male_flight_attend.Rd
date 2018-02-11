@@ -6,8 +6,8 @@
 \title{Dear Mona, How Many Flight Attendants Are Men?}
 \format{A data frame with 320 rows representing job categories and 2 variables:
 \describe{
-  \item{job_category}{Category of job} 
-  \item{percentage_male}{Percentage of workforce that are male} 
+  \item{job_category}{Category of job}
+  \item{percentage_male}{Percentage of workforce that are male}
 }}
 \source{
 IPUMS 2012 \url{https://usa.ipums.org/usa/}
@@ -18,6 +18,6 @@ male_flight_attend
 \description{
 The raw data behind the story
 "Dear Mona, How Many Flight Attendants Are Men?"
-\url{http://fivethirtyeight.com/datalab/dear-mona-how-many-flight-attendants-are-men/}.
+\url{https://fivethirtyeight.com/features/dear-mona-how-many-flight-attendants-are-men/}.
 }
 \keyword{datasets}

@@ -21,7 +21,7 @@
   \item{employed_fulltime_yearround}{Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)}
   \item{unemployed}{Number unemployed (ESR == 3)}
   \item{unemployment_rate}{Unemployed / (Unemployed + Employed)}
-  \item{p25th}{25th percentile of earnigns}
+  \item{p25th}{25th percentile of earnings}
   \item{median}{Median earnings of full-time, year-round workers}
   \item{p75th}{75th percentile of earnings}
   \item{college_jobs}{Number with job requiring a college degree}
@@ -38,7 +38,7 @@ college_recent_grads
 \description{
 The raw data behind the story
 "The Economic Guide To Picking A College Major"
-\url{http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
+\url{https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
 }
 \seealso{
 \code{\link{college_grad_students}}, \code{\link{college_all_ages}}

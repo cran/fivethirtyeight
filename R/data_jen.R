@@ -2,7 +2,7 @@
 #'
 #' The raw data behind the story
 #' "Most Police Don't Live In The Cities They Serve"
-#' \url{http://fivethirtyeight.com/datalab/most-police-dont-live-in-the-cities-they-serve/}.
+#' \url{https://fivethirtyeight.com/features/most-police-dont-live-in-the-cities-they-serve/}.
 #'
 #' @details
 #' The dataset includes the cities with the 75 largest police forces, with the exception of Honolulu for which data is not available. All calculations are based on data from the U.S. Census.
@@ -40,7 +40,7 @@
 #'
 #' The raw data behind the story
 #' "Looking For Clues: Who Is Going To Run For President In 2016?"
-#' \url{http://fivethirtyeight.com/datalab/2016-president-who-is-going-to-run/}.
+#' \url{https://fivethirtyeight.com/features/2016-president-who-is-going-to-run/}.
 #'
 #' @format A data frame with 42 rows representing events attended in Iowa and New Hampshire by potential presidential primary candidates and 8 variables:
 #' \describe{
@@ -61,7 +61,7 @@
 #'
 #' The raw data behind the story
 #' "Looking For Clues: Who Is Going To Run For President In 2016?"
-#' \url{http://fivethirtyeight.com/datalab/2016-president-who-is-going-to-run/}.
+#' \url{https://fivethirtyeight.com/features/2016-president-who-is-going-to-run/}.
 #'
 #' @format A data frame with 25 rows representing potential presidential primary candidates and 5 variables:
 #' \describe{
@@ -79,7 +79,7 @@
 #'
 #' The raw data behind the story
 #' "Who Will Run For President: Romney Is Out"
-#' \url{http://fivethirtyeight.com/datalab/romney-not-running-for-president/}.
+#' \url{https://fivethirtyeight.com/features/romney-not-running-for-president/}.
 #'
 #' @format A data frame with 27 rows representing potential presidential primary candidates and 5 variables:
 #' \describe{
@@ -97,7 +97,7 @@
 #'
 #' The raw data behind the story
 #' "Who Will Run For President: Romney Is Out"
-#' \url{http://fivethirtyeight.com/datalab/romney-not-running-for-president/}.
+#' \url{https://fivethirtyeight.com/features/romney-not-running-for-president/}.
 #'
 #' @format A data frame with 74 rows representing events attended by potential presidential primary candidates and 8 variables:
 #' \describe{
@@ -121,7 +121,7 @@
 #'
 #' The raw data behind the story
 #' "Sitting Presidents Give Way More Commencement Speeches Than They Used To"
-#' \url{http://fivethirtyeight.com/features/sitting-presidents-give-way-more-commencement-speeches-than-they-used-to/}.
+#' \url{https://fivethirtyeight.com/features/sitting-presidents-give-way-more-commencement-speeches-than-they-used-to/}.
 #'
 #' @format A data frame with 154 rows representing speeches and 8 variables:
 #' \describe{
@@ -142,7 +142,7 @@
 #'
 #' The raw data behind the story
 #' "Do Pulitzers Help Newspapers Keep Readers?"
-#' \url{http://fivethirtyeight.com/datalab/do-pulitzers-help-newspapers-keep-readers/}.
+#' \url{https://fivethirtyeight.com/features/do-pulitzers-help-newspapers-keep-readers/}.
 #'
 #' @format A data frame with 50 rows representing newspapers and 7 variables:
 #' \describe{
@@ -154,7 +154,7 @@
 #'   \item{num_finals2004_2014}{Number of Pulitzer Prize winners and finalists from 2004 to 2014}
 #'   \item{num_finals1990_2014}{Number of Pulitzer Prize winners and finalists from 1990 to 2014}
 #' }
-#' @source See \url{http://fivethirtyeight.com/datalab/do-pulitzers-help-newspapers-keep-readers/}
+#' @source See \url{https://fivethirtyeight.com/features/do-pulitzers-help-newspapers-keep-readers/}
 "pulitzer"
 
 
@@ -162,7 +162,7 @@
 #'
 #' The raw data behind the story
 #' "The Rock Isn't Alone: Lots Of People Are Worried About 'The Big One'"
-#' \url{http://fivethirtyeight.com/datalab/the-rock-isnt-alone-lots-of-people-are-worried-about-the-big-one/}.
+#' \url{https://fivethirtyeight.com/features/the-rock-isnt-alone-lots-of-people-are-worried-about-the-big-one/}.
 #'
 #' @format A data frame with 1013 rows representing respondents and 11 variables:
 #' \describe{
@@ -186,7 +186,7 @@
 #'
 #' The raw data behind the story
 #' "How Americans Like Their Steak"
-#' \url{http://fivethirtyeight.com/datalab/how-americans-like-their-steak/}.
+#' \url{https://fivethirtyeight.com/features/how-americans-like-their-steak/}.
 #'
 #' @format A data frame with 550 rows representing respondents and 15 variables:
 #' \describe{
@@ -206,7 +206,7 @@
 #'   \item{educ}{Education level}
 #'   \item{region}{Region of US}
 #' }
-#' @source See \url{http://fivethirtyeight.com/datalab/how-americans-like-their-steak/}
+#' @source See \url{https://fivethirtyeight.com/features/how-americans-like-their-steak/}
 "steak_survey"
 
 
@@ -214,7 +214,10 @@
 #'
 #' The raw data behind the story
 #' "A Complete Catalog Of Every Time Someone Cursed Or Bled Out In A Quentin Tarantino Movie"
-#' \url{http://fivethirtyeight.com/features/complete-catalog-curses-deaths-quentin-tarantino-films/}.
+#' \url{https://fivethirtyeight.com/features/complete-catalog-curses-deaths-quentin-tarantino-films/}.
+#' An analysis using this data was contributed by Olivia Barrows, Jojo Miller, and Jayla Nakayama
+#' as a package vignette at
+#' \url{http://fivethirtyeight-r.netlify.com/articles/tarantino_swears.html}.
 #'
 #' @format A data frame with 1894 rows representing curse/death instances and 4 variables:
 #' \describe{
@@ -231,7 +234,7 @@
 #'
 #' The raw data behind the story
 #' "Why Some Tennis Matches Take Forever"
-#' \url{http://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/}.
+#' \url{https://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/}.
 #'
 #' @format A data frame with 205 rows representing tournaments and 5 variables:
 #' \describe{
@@ -249,7 +252,7 @@
 #'
 #' The raw data behind the story
 #' "Why Some Tennis Matches Take Forever"
-#' \url{http://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/}.
+#' \url{https://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/}.
 #'
 #' @format A data frame with 218 rows representing players and 2 variables:
 #' \describe{
@@ -264,7 +267,7 @@
 #'
 #' The raw data behind the story
 #' "Why Some Tennis Matches Take Forever"
-#' \url{http://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/}.
+#' \url{https://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/}.
 #'
 #' @format A data frame with 120 rows representing serves and 7 variables:
 #' \describe{
@@ -286,7 +289,7 @@
 #'
 #' The raw data behind the story
 #' "How Trump Hacked The Media"
-#' \url{http://fivethirtyeight.com/features/how-donald-trump-hacked-the-media/}.
+#' \url{https://fivethirtyeight.com/features/how-donald-trump-hacked-the-media/}.
 #'
 #' @format A data frame with 286 rows representing lead stories and 3 variables:
 #' \describe{
@@ -303,7 +306,9 @@
 #' The raw data behind the story
 #' "The World's Favorite Donald Trump Tweets"
 #' \url{https://fivethirtyeight.com/features/the-worlds-favorite-donald-trump-tweets/}.
-#' Tweets posted on twitter by Donald Trump (@@realDonaldTrump)
+#' Tweets posted on twitter by Donald Trump (@@realDonaldTrump).
+#' An analysis using this data was contributed by Adam Spannbauer as a package vignette at
+#' \url{http://fivethirtyeight-r.netlify.com/articles/trump_twitter.html}.
 #'
 #' @format A data frame with 448 rows representing tweets and 3 variables:
 #' \describe{
@@ -319,7 +324,7 @@
 #'
 #' The raw data behind the story
 #' "The Most Common Unisex Names In America: Is Yours One Of Them?"
-#' \url{http://fivethirtyeight.com/features/there-are-922-unisex-names-in-america-is-yours-one-of-them/}.
+#' \url{https://fivethirtyeight.com/features/there-are-922-unisex-names-in-america-is-yours-one-of-them/}.
 #'
 #' @format A data frame with 919 rows representing names and 5 variables:
 #' \describe{
@@ -338,7 +343,7 @@
 #'
 #' The raw data behind the story
 #' "Where People Go To Check The Weather"
-#' \url{http://fivethirtyeight.com/datalab/weather-forecast-news-app-habits/}.
+#' \url{https://fivethirtyeight.com/features/weather-forecast-news-app-habits/}.
 #'
 #' @format A data frame with 928 rows representing respondents and 9 variables:
 #' \describe{
@@ -393,7 +398,7 @@
 #'
 #' The raw data behind the story
 #' "The Battle For Riddler Nation, Round 2"
-#' \url{http://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/}.
+#' \url{https://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/}.
 #' Analysis of the submitted solutions can be found at: \url{https://fivethirtyeight.com/features/how-much-should-you-bid-for-that-painting/}
 #'
 #' @format A data frame with 932 rows representing submissions and 11 variables:
@@ -429,7 +434,7 @@
 #' "Trump Might Be The First President To Scrap A National Monument"
 #' \url{https://fivethirtyeight.com/features/trump-might-be-the-first-president-to-scrap-a-national-monument/}.
 #'
-#' @format A data frame with 344 rows representing acts and 9 variables:
+#' @format A data frame with 344 rows representing acts and 9 variables (Note that 7 of the original rows failed to parse and are omitted here):
 #' \describe{
 #'   \item{current_name}{Current name of piece of land designated under the Antiquities Act}
 #'   \item{states}{State(s) or territory where land is located}
@@ -439,7 +444,7 @@
 #'   \item{date}{Date of action}
 #'   \item{year}{Year of action}
 #'   \item{pres_or_congress}{President or congress that issued action}
-#'   \item{acres_affected}{Acres affected by action. Note that total current acreage is not included. National monuments that cover ocean are listed in square miles.} 
+#'   \item{acres_affected}{Acres affected by action. Note that total current acreage is not included. National monuments that cover ocean are listed in square miles.}
 #' }
 #' @source National Parks Conservation Association \url{https://www.npca.org/} and National Parks Service Archeology Program \url{https://www.nps.gov/history/archeology/sites/antiquities/MonumentsList.htm}
 "antiquities_act"
@@ -461,7 +466,7 @@
 #'   \item{mehs}{Mehs}
 #'   \item{league_average_gpct}{League-average goose percentage}
 #'   \item{ppf}{Pitcher park factor}
-#'   \item{replacement_gpct}{Replacement-level goose pecentage}
+#'   \item{replacement_gpct}{Replacement-level goose percentage}
 #'   \item{gwar}{Goose Wins Above Replacement}
 #'   \item{key_retro}{Retrosheet unique player identifier}
 #' }

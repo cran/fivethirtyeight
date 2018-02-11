@@ -20,6 +20,9 @@ tarantino
 \description{
 The raw data behind the story
 "A Complete Catalog Of Every Time Someone Cursed Or Bled Out In A Quentin Tarantino Movie"
-\url{http://fivethirtyeight.com/features/complete-catalog-curses-deaths-quentin-tarantino-films/}.
+\url{https://fivethirtyeight.com/features/complete-catalog-curses-deaths-quentin-tarantino-films/}.
+An analysis using this data was contributed by Olivia Barrows, Jojo Miller, and Jayla Nakayama
+as a package vignette at
+\url{http://fivethirtyeight-r.netlify.com/articles/tarantino_swears.html}.
 }
 \keyword{datasets}

@@ -2,7 +2,7 @@
 #'
 #' The raw data behind the story
 #' "Should Travelers Avoid Flying Airlines That Have Had Crashes in the Past?"
-#' \url{http://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/}.
+#' \url{https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/}.
 #'
 #' @format A data frame with 56 rows representing airlines and 9 variables:
 #' \describe{
@@ -36,7 +36,7 @@
 #'
 #' The raw data behind the story
 #' "Joining The Avengers Is As Deadly As Jumping Off A Four-Story Building"
-#' \url{http://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/}.
+#' \url{https://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/}.
 #'
 #' @format A data frame with 173 rows representing characters and 21 variables:
 #' \describe{
@@ -71,7 +71,7 @@
 #'
 #' The raw data behind the story
 #' "Dear Mona, Which State Has The Worst Drivers?"
-#' \url{http://fivethirtyeight.com/datalab/which-state-has-the-worst-drivers/}
+#' \url{https://fivethirtyeight.com/features/which-state-has-the-worst-drivers/}
 #'
 #' @format A data frame with 51 rows representing the 50 states + D.C. and 8 variables:
 #' \describe{
@@ -95,12 +95,12 @@
 #'
 #' The raw data behind the story
 #' "The Dollar-And-Cents Case Against Hollywood's Exclusion of Women"
-#' \url{http://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/}.
+#' \url{https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/}.
 #'
 #' @format A data frame with 1794 rows representing movies and 15 variables:
 #' \describe{
 #'   \item{year}{Year of release}
-#'   \item{imdb}{Text to append \url{http://www.imdb.com/title/} to for IMDB url. E.g. \url{http://www.imdb.com/title/tt1711425}}
+#'   \item{imdb}{Text to construct IMDB url. Ex: \url{http://www.imdb.com/title/tt1711425}}
 #'   \item{title}{Movie test}
 #'   \item{test}{bechdel test result (detailed, with discrepancies indicated)}
 #'   \item{clean_test}{bechdel test result (detailed): \code{ok} = passes test, \code{dubious}, \code{men} = women only talk about men, \code{notalk} = women don't talk to each other, \code{nowomen} = fewer than two women }
@@ -129,7 +129,7 @@
 #'
 #' The raw data behind the story
 #' "Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?"
-#' \url{http://fivethirtyeight.com/datalab/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/}.
+#' \url{https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/}.
 #'
 #' @format A data frame with 193 rows representing countries and 5 variables:
 #' \describe{
@@ -139,7 +139,7 @@
 #'   \item{wine_servings}{Servings of wine in average serving sizes per person}
 #'   \item{total_litres_of_pure_alcohol}{Total litres of pure alcohol per person}
 #' }
-#' @source World Health Organisation, Global Information System on Alcohol and Health (GISAH), 2010.
+#' @source World Health Organization, Global Information System on Alcohol and Health (GISAH), 2010.
 #' @examples
 #' # To convert data frame to tidy data (long) format, run:
 #' library(tidyverse)
@@ -158,12 +158,14 @@
 #'
 #' The raw data behind the story
 #' "'Straight Outta Compton' Is The Rare Biopic Not About White Dudes"
-#' \url{http://fivethirtyeight.com/features/straight-outta-compton-is-the-rare-biopic-not-about-white-dudes/}.
+#' \url{https://fivethirtyeight.com/features/straight-outta-compton-is-the-rare-biopic-not-about-white-dudes/}.
+#' An analysis using this data was contributed by Pradeep Adhokshaja as a package vignette at
+#' \url{http://fivethirtyeight-r.netlify.com/articles/biopics.html}.
 #'
 #' @format A data frame with 761 rows representing movies and 14 variables:
 #' \describe{
 #'   \item{title}{Title of the film.}
-#'   \item{site}{Text to append \url{http://www.imdb.com/title/} to for IMDB url. E.g. \url{http://www.imdb.com/title/tt1711425}}
+#'   \item{site}{Text to construct IMDB url. Ex: \url{http://www.imdb.com/title/tt1711425}}
 #'   \item{country}{Country of origin.}
 #'   \item{year_release}{Year of release.}
 #'   \item{box_office}{Gross earnings at U.S. box office.}
@@ -186,7 +188,9 @@
 #'
 #' The raw data behind the story
 #' "A Statistical Analysis of the Work of Bob Ross"
-#' \url{http://fivethirtyeight.com/features/a-statistical-analysis-of-the-work-of-bob-ross/}.
+#' \url{https://fivethirtyeight.com/features/a-statistical-analysis-of-the-work-of-bob-ross/}.
+#' An analysis using this data was contributed by Jonathan Bouchet as a package vignette at
+#' \url{http://fivethirtyeight-r.netlify.com/articles/bob_ross.html}.
 #'
 #' @format A data frame with 403 rows representing episodes and 71 variables:
 #' \describe{
@@ -279,7 +283,7 @@
 #'
 #' The raw data behind the story
 #' "Why Classic Rock Isn't What It Used To Be"
-#' \url{http://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/}.
+#' \url{https://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/}.
 #'
 #' @format A data frame with 37,673 rows representing song plays and 8 variables:
 #' \describe{
@@ -301,7 +305,7 @@
 #'
 #' The raw data behind the story
 #' "Why Classic Rock Isn't What It Used To Be"
-#' \url{http://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/}.
+#' \url{https://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/}.
 #'
 #' @format A data frame with 2230 rows representing unique songs and 7 variables:
 #' \describe{
@@ -323,7 +327,7 @@
 #'
 #' The raw data behind the story
 #' "The Economic Guide To Picking A College Major"
-#' \url{http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
+#' \url{https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
 #'
 #' @format A data frame with 173 rows representing majors (all ages) and 11 variables:
 #' \describe{
@@ -335,7 +339,7 @@
 #'   \item{employed_fulltime_yearround}{Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)}
 #'   \item{unemployed}{Number unemployed (ESR == 3)}
 #'   \item{unemployment_rate}{Unemployed / (Unemployed + Employed)}
-#'   \item{p25th}{25th percentile of earnigns}
+#'   \item{p25th}{25th percentile of earnings}
 #'   \item{median}{Median earnings of full-time, year-round workers}
 #'   \item{p75th}{75th percentile of earnings}
 #' }
@@ -349,7 +353,7 @@
 #'
 #' The raw data behind the story
 #' "The Economic Guide To Picking A College Major"
-#' \url{http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
+#' \url{https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
 #'
 #' @format A data frame with 173 rows representing majors (graduate vs nongraduate students) and 22 variables:
 #' \describe{
@@ -362,7 +366,7 @@
 #'   \item{grad_employed_fulltime_yearround}{Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)}
 #'   \item{grad_unemployed}{Number unemployed (ESR == 3)}
 #'   \item{grad_unemployment_rate}{Unemployed / (Unemployed + Employed)}
-#'   \item{grad_p25th}{25th percentile of earnigns}
+#'   \item{grad_p25th}{25th percentile of earnings}
 #'   \item{grad_median}{Median earnings of full-time, year-round workers}
 #'   \item{grad_p75th}{75th percentile of earnings}
 #'   \item{nongrad_total}{Total number of people with major}
@@ -370,7 +374,7 @@
 #'   \item{nongrad_employed_fulltime_yearround}{Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)}
 #'   \item{nongrad_unemployed}{Number unemployed (ESR == 3)}
 #'   \item{nongrad_unemployment_rate}{Unemployed / (Unemployed + Employed)}
-#'   \item{nongrad_p25th}{25th percentile of earnigns}
+#'   \item{nongrad_p25th}{25th percentile of earnings}
 #'   \item{nongrad_median}{Median earnings of full-time, year-round workers}
 #'   \item{nongrad_p75th}{75th percentile of earnings}
 #'   \item{grad_share}{grad_total / (grad_total + nongrad_total)}
@@ -386,7 +390,7 @@
 #'
 #' The raw data behind the story
 #' "The Economic Guide To Picking A College Major"
-#' \url{http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
+#' \url{https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/}.
 #'
 #' @format A data frame with 173 rows representing majors (recent graduates) and 21 variables:
 #' \describe{
@@ -405,7 +409,7 @@
 #'   \item{employed_fulltime_yearround}{Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP >= 35)}
 #'   \item{unemployed}{Number unemployed (ESR == 3)}
 #'   \item{unemployment_rate}{Unemployed / (Unemployed + Employed)}
-#'   \item{p25th}{25th percentile of earnigns}
+#'   \item{p25th}{25th percentile of earnings}
 #'   \item{median}{Median earnings of full-time, year-round workers}
 #'   \item{p75th}{75th percentile of earnings}
 #'   \item{college_jobs}{Number with job requiring a college degree}
@@ -423,7 +427,9 @@
 #'
 #' The raw data behind the story
 #' "Comic Books Are Still Made By Men, For Men And About Men"
-#' \url{http://fivethirtyeight.com/features/women-in-comic-books/}.
+#' \url{https://fivethirtyeight.com/features/women-in-comic-books/}.
+#' An analysis using this data was contributed by Jonathan Bouchet as a package vignette at
+#' \url{http://fivethirtyeight-r.netlify.com/articles/comics_gender.html}.
 #'
 #' @format A data frame with 23272 rows representing characters and 16 variables:
 #' \describe{
@@ -458,7 +464,7 @@
 #'
 #' The raw data behind the story
 #' "Elitist, Superfluous, Or Popular? We Polled Americans on the Oxford Comma"
-#' \url{http://fivethirtyeight.com/datalab/elitist-superfluous-or-popular-we-polled-americans-on-the-oxford-comma/}.
+#' \url{https://fivethirtyeight.com/features/elitist-superfluous-or-popular-we-polled-americans-on-the-oxford-comma/}.
 #'
 #' @format A data frame with 1129 rows representing respondents and 13 variables:
 #' \describe{
@@ -476,7 +482,7 @@
 #'   \item{care_data}{How much, if at all, do you care about the debate over the use of the word "data" as a singular or plural noun?}
 #'   \item{care_proper_grammar}{In your opinion, how important or unimportant is proper use of grammar?}
 #' }
-#' @source See \url{https://github.com/fivethirtyeight/data/tree/master/comma-survey-data}.
+#' @source See \url{https://github.com/fivethirtyeight/data/tree/master/comma-survey}.
 "comma_survey"
 
 
@@ -485,7 +491,7 @@
 #'
 #' The raw data behind the story
 #' "Both Republicans And Democrats Have an Age Problem"
-#' \url{http://fivethirtyeight.com/features/both-republicans-and-democrats-have-an-age-problem/}.
+#' \url{https://fivethirtyeight.com/features/both-republicans-and-democrats-have-an-age-problem/}.
 #'
 #' @format A data frame with 18,635 rows representing members of Congress
 #' (House and Senate) and 13 variables:
@@ -529,7 +535,7 @@
 #'
 #' The raw data behind the story
 #' "Every Guest Jon Stewart Ever Had On 'The Daily Show'"
-#' \url{http://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/}.
+#' \url{https://fivethirtyeight.com/features/every-guest-jon-stewart-ever-had-on-the-daily-show/}.
 #'
 #' @format A data frame with 2693 rows representing guests and 5 variables:
 #' \describe{
@@ -537,9 +543,9 @@
 #'   \item{google_knowledge_occupation}{Their occupation or office, according to Google's Knowledge Graph or, if they're not in there, how Stewart introduced them on the program.}
 #'   \item{show}{Air date of episode. Not unique, as some shows had more than one guest}
 #'   \item{group}{A larger group designation for the occupation. For instance, us senators, us presidents, and former presidents are all under "politicians"}
-#'   \item{raw_guest_list}{The person or list of people who appeared on the show, according to Wikipedia. The GoogleKnowlege_Occupation only refers to one of them in a given row.}
+#'   \item{raw_guest_list}{The person or list of people who appeared on the show, according to Wikipedia. The GoogleKnowledge_Occupation only refers to one of them in a given row.}
 #' }
-#' @source Google Knowlege Graph, The Daily Show clip library, Wikipedia.
+#' @source Google Knowledge Graph, The Daily Show clip library, Wikipedia.
 "daily_show_guests"
 
 
@@ -548,7 +554,7 @@
 #'
 #' The raw data behind the story
 #' "Some Democrats Who Could Step Up If Hillary Isn't Ready For Hillary"
-#' \url{http://fivethirtyeight.com/datalab/some-democrats-who-could-step-up-if-hillary-isnt-ready-for-hillary/}.
+#' \url{https://fivethirtyeight.com/features/some-democrats-who-could-step-up-if-hillary-isnt-ready-for-hillary/}.
 #'
 #' @format A data frame with 67 rows representing members of the Democratic Party and 3 variables:
 #' \describe{
@@ -565,7 +571,7 @@
 #'
 #' The raw data behind the story
 #' "How Baby Boomers Get High"
-#' \url{http://fivethirtyeight.com/datalab/how-baby-boomers-get-high/}.
+#' \url{https://fivethirtyeight.com/features/how-baby-boomers-get-high/}.
 #' It covers usage of 13 drugs in the past 12 months across 17 age groups.
 #'
 #' @format A data frame with 17 rows representing age groups and 28 variables:
@@ -623,7 +629,7 @@
 #'
 #' The raw data behind the story
 #' "Early Senate Polls Have Plenty to Tell Us About November"
-#' \url{http://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/}.
+#' \url{https://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/}.
 #'
 #' @format A data frame with 107 rows representing a poll and 4 variables:
 #' \describe{
@@ -641,7 +647,7 @@
 #'
 #' The raw data behind the story
 #' "Some People Are Too Superstitious To Have A Baby On Friday The 13th"
-#' \url{http://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/}.
+#' \url{https://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/}.
 #'
 #'
 #' @format A data frame with 5479 rows representing dates and 6 variables:
@@ -663,7 +669,7 @@
 #'
 #' The raw data behind the story
 #' "Some People Are Too Superstitious To Have A Baby On Friday The 13th"
-#' \url{http://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/}.
+#' \url{https://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/}.
 #'
 #'
 #' @format A data frame with 3652 rows representing dates and 6 variables:
@@ -685,7 +691,7 @@
 #'
 #' The raw data behind the story
 #' "Blatter's Reign At FIFA Hasn't Helped Soccer's Poor"
-#' \url{http://fivethirtyeight.com/features/blatters-reign-at-fifa-hasnt-helped-soccers-poor/}.
+#' \url{https://fivethirtyeight.com/features/blatters-reign-at-fifa-hasnt-helped-soccers-poor/}.
 #'
 #' @format A data frame with 191 rows representing countries and 5 variables:
 #' \describe{
@@ -707,7 +713,7 @@
 #'
 #' The raw data behind the story
 #' "Pols And Polls Say The Same Thing: Jeb Bush Is A Weak Front-Runner"
-#' \url{http://fivethirtyeight.com/features/pols-and-polls-say-the-same-thing-jeb-bush-is-a-weak-front-runner/}.
+#' \url{https://fivethirtyeight.com/features/pols-and-polls-say-the-same-thing-jeb-bush-is-a-weak-front-runner/}.
 #' This data includes something we call "endorsement points," an attempt to quantify the importance of endorsements
 #' by weighting each one according to the position held by the endorser:
 #' 10 points for each governor, 5 points for each senator and 1 point for each
@@ -734,7 +740,7 @@
 #'
 #' The raw data behind the story
 #' "Be Suspicious Of Online Movie Ratings, Especially Fandango's"
-#' \url{http://fivethirtyeight.com/features/fandango-movies-ratings/}.
+#' \url{https://fivethirtyeight.com/features/fandango-movies-ratings/}.
 #' contains every film that has a Rotten Tomatoes rating, a RT User rating, a
 #' Metacritic score, a Metacritic User score, and IMDb score, and at least 30
 #' fan reviews on Fandango.
@@ -774,7 +780,7 @@
 #'
 #' The raw data behind the story
 #' "How To Break FIFA"
-#' \url{http://fivethirtyeight.com/features/how-to-break-fifa/}.
+#' \url{https://fivethirtyeight.com/features/how-to-break-fifa/}.
 #'
 #'
 #' @format A data frame with 3652 rows representing guests and 6 variables:
@@ -803,7 +809,7 @@
 #'
 #' The raw data behind the story
 #' "41 Percent Of Fliers Think You're Rude If You Recline Your Seat"
-#' \url{http://fivethirtyeight.com/datalab/airplane-etiquette-recline-seat}.
+#' \url{https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/}.
 #'
 #' @format A data frame with 1040 rows representing respondents and 27 variables:
 #' \describe{
@@ -844,7 +850,7 @@
 #'
 #' The raw data behind the story
 #' "The FiveThirtyEight International Food Association's 2014 World Cup"
-#' \url{http://fivethirtyeight.com/features/the-fivethirtyeight-international-food-associations-2014-world-cup/}.
+#' \url{https://fivethirtyeight.com/features/the-fivethirtyeight-international-food-associations-2014-world-cup/}.
 #' For all the countries below, the response to the following question is presented:
 #' "Please rate how much you like the traditional cuisine of X"
 #' \itemize{
@@ -916,7 +922,7 @@
 #'
 #' The raw data behind the story
 #' "The Definitive Analysis Of 'Love Actually,' The Greatest Christmas Movie Of Our Time"
-#' \url{http://fivethirtyeight.com/features/the-definitive-analysis-of-love-actually-the-greatest-christmas-movie-of-our-time/}.
+#' \url{https://fivethirtyeight.com/features/the-definitive-analysis-of-love-actually-the-greatest-christmas-movie-of-our-time/}.
 #' A table of the central actors in "Love Actually" and which scenes they appear in.
 #'
 #' @format A data frame with 71 rows representing scenes and 15 variables:
@@ -953,7 +959,7 @@
 #'
 #' The raw data behind the story
 #' "The Definitive Analysis Of 'Love Actually,' The Greatest Christmas Movie Of Our Time"
-#' \url{http://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/}.
+#' \url{https://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/}.
 #' The adjacency matrix of which actors appear in the same scene together.
 #'
 #' @format A data frame with 14 rows representing actors and 15 variables:
