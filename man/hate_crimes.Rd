@@ -4,9 +4,10 @@
 \name{hate_crimes}
 \alias{hate_crimes}
 \title{Higher Rates Of Hate Crimes Are Tied To Income Inequality}
-\format{A data frame with 51 rows representing US states and DC and 12 variables:
+\format{A data frame with 51 rows representing US states and DC and 13 variables:
 \describe{
   \item{state}{State name}
+  \item{state_abbrev}{State abbreviation}
   \item{median_house_inc}{Median household income, 2016}
   \item{share_unemp_seas}{Share of the population that is unemployed (seasonally adjusted), Sept. 2016}
   \item{share_pop_metro}{Share of the population that lives in metropolitan areas, 2015}
@@ -29,5 +30,14 @@ hate_crimes
 The raw data behind the story
 "Higher Rates Of Hate Crimes Are Tied To Income Inequality"
 \url{https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/}.
+}
+\examples{
+library(ggplot2)
+ggplot(hate_crimes, aes(x = share_vote_trump, y = hate_crimes_per_100k_splc)) +
+  geom_text(aes(label = state_abbrev)) +
+  geom_smooth(se = FALSE, method = "lm") +
+  labs(x = "Proportion of votes for Donald Trump",
+       y = "Hate crimes per 100k during Nov 9-18, 2016 (SPLC)",
+       title = "Relationship between Trump support & hate crimes")
 }
 \keyword{datasets}

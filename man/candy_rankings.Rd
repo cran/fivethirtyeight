@@ -28,11 +28,12 @@ candy_rankings
 }
 \description{
 The raw data behind the story "The Ultimate Halloween Candy Power Ranking"
-\url{http://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/}.
+\url{https://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/}.
 }
 \examples{
 # To convert data frame to tidy data (long) format, run:
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 library(stringr)
 candy_rankings_tidy <- candy_rankings \%>\%
   gather(characteristics, present, -c(competitorname, sugarpercent, pricepercent, winpercent)) \%>\%

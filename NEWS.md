@@ -1,16 +1,38 @@
+# fivethirtyeight 0.5.0
+
+* Added vignette corresponding to Technology Innovations in Statistics Education [paper](https://escholarship.org/uc/item/0rx1231m#main)
+* Removed tidyverse from `DESCRIPTION` Depends, Imports, or Suggests fields
+* Added `state_info` data frame of state name, abbreviation, US census division/region
+* Added `state_abbrev` variable to `hate_crimes` dataset so that 
+users can plot state abbreviations via `geom_text(aes(label = state_abbrev))`
+instead of using less informative `geom_point()`
+* Given CRAN package size restrictions, the following datasets only consist of a preview of the first 10 rows of the entire dataset: `comic_characters`, `goose`, `house_district_forecast`, `mlb_elo`, `nba_carmelo`, `nfl_elo`, `ratings`, `senators`, and `spi_matches`. Code to load the entire dataset are provided in the respective help file examples.
+* Added new data sets:
+    + By Starry Zhou: `august_senate_polls`, `cabinet_turnover`, 
+    `elasticity_by_district`, `elasticity_by_state`, `endorsements_2020`, 
+    `forecast_results_2018`, `governor_national_forecast`, `governor_state_forecast`,
+    `house_district_forecast`, `house_national_forecast`, `masculinity_survey`, 
+    `mueller_approval_polls`, `ncaa_w_bball_tourney`, `partisan_lean_district`, 
+    `partisan_lean_state`, `russia_investigation`, `senate_national_forecast`, 
+    `senate_seat_forecast`, `trump_lawsuits`, 
+    
+    
+
 # fivethirtyeight 0.4.0
 
 * Package website now at <http://fivethirtyeight-r.netlify.com/>
 * Added new data sets:
     + By Meredith Manley: `ahca_polls`, `bachelorette`, `candy_rankings`, 
-    `chess_transfers`, `generic_polllist`, `generic_topline`, `mlb_elo`, 
-    `ratings`, `spi_global_rankings`, `spi_matches`, `tweets`
-    + By Maggie Shea: `nba_carmelo`, `nfl_elo`, `nfl_fandom_google`, 
-    `nfl_fandom_surveymonkey`, `google_trends`, `mediacloud_hurricanes`, 
-    `mediacloud_states`, `mediacloud_online_news`, `mediacloud_trump`, 
-    `tv_hurricanes`, `tv_hurricanes_by_network`, `tv_states`, `sandy_311`,
-    `senators`, `trump_approval_poll`, `trump_approval_trend`, 
-    `trumpworld_issues`, `trumpworld_polls`, `twitter_presidents`, `undefeated`
+    `chess_transfers`, `generic_polllist`, `generic_topline`, 
+    `mayweather_mcgregor_tweets`, `mlb_elo`, `ratings`, `spi_global_rankings`, 
+    `spi_matches`.
+    + By Maggie Shea: `google_trends`, `nba_carmelo`, `nfl_elo`,
+    `nfl_fandom_google`, `nfl_fandom_surveymonkey`, `mediacloud_hurricanes`,
+    `mediacloud_states`, `mediacloud_online_news`, `mediacloud_trump`,
+    `riddler_pick_lowest`, `sandy_311`, `senators`, `tv_hurricanes`,
+    `tv_hurricanes_by_network`, `tv_states`, `trump_approval_poll`,
+    `trump_approval_trend`, `trumpworld_issues`,`trumpworld_polls`,
+    `twitter_presidents`, `undefeated`
 * Note for now `mayweather_mcgregor_tweets`, `mlb_elo`, `nba_carmelo`,
 `nfl_elo`, `senators`, only include the first 10 rows of the data because of R
 package file size restrictions (< 5MB tarballs); code to download/process the
@@ -20,12 +42,11 @@ these datasets in v0.5.0 of package using the `drat` package.
 Ex: `bechdel$clean_test`
 * Vignette notes:
     + Added a vignette that has a link to all user-contributed vignettes, which 
-    areonly available on development version of package and on GitHub due to 
+    are only available on development version of package and on GitHub due to 
     CRAN package size restrictions.
     + For all datasets that have a user contributed vignette, add a link to it 
     in the corresponding help/roxygen code file.
 * Added `CITATION`
-
 
 # fivethirtyeight 0.3.0
 

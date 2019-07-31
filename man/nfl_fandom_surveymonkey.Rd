@@ -41,11 +41,12 @@ nfl_fandom_surveymonkey
 \description{
 The raw data behind the story
 "How Every NFL Team’s Fans Lean Politically"
-\url{https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically}: Surveymonkey Data.
+\url{https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically}: SurveyMonkey Data.
 }
 \examples{
 # To convert data frame to tidy data (long) format, run:
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 nfl_fandom_surveymonkey_tidy <- nfl_fandom_surveymonkey \%>\%
   gather(key = race_party, value = percent,
          -c("team", "total_respondents", "gop_percent", "dem_percent",

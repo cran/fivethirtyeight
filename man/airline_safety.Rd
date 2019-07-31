@@ -17,7 +17,7 @@
   \item{fatalities_00_14}{Total number of fatalities, 2000-2014}
 }}
 \source{
-Aviation Safety Network \url{http://aviation-safety.net}.
+Aviation Safety Network \url{https://aviation-safety.net}.
 }
 \usage{
 airline_safety
@@ -29,7 +29,8 @@ The raw data behind the story
 }
 \examples{
 # To convert data frame to tidy data (long) format, run:
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 library(stringr)
 airline_safety_tidy <- airline_safety \%>\%
   gather(type, count, -c(airline, incl_reg_subsidiaries, avail_seat_km_per_week)) \%>\%

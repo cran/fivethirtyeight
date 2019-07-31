@@ -16,7 +16,7 @@
 \item{trump_2016_vote}{The percentage of voters in the region who voted for Trump in the 2016 Presidential Election}
 }}
 \source{
-Google Trends \url{https://g.co/trends/5P8aa}
+Google Trends \url{https://trends.google.com/}.
 }
 \usage{
 nfl_fandom_google
@@ -28,7 +28,8 @@ The raw data behind the story
 }
 \examples{
 # To convert data frame to tidy data (long) format, run:
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 nfl_fandom_google_tidy <- nfl_fandom_google \%>\%
   gather(sport, search_traffic, -c("dma", "trump_2016_vote")) \%>\%
   arrange(dma)

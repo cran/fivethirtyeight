@@ -17,7 +17,8 @@
 #' @source See \url{https://github.com/fivethirtyeight/data/blob/master/ahca-polls/README.md}
 #' @examples
 #' # To convert data frame to tidy data (long) format, run:
-#' library(tidyverse)
+#' library(dplyr)
+#' library(tidyr)
 #' library(stringr)
 #' ahca_polls_tidy <- ahca_polls %>%
 #'   gather(opinion, count, -c(start, end, pollster, text, url))
@@ -69,7 +70,7 @@
 #' "D1" means a one-on-one date, "D2" means a 2-on-1, "D3" means a 3-on-1
 #' group date, and so on. Weeks of the show are eliminated by rose
 #' ceremonies, and may not line up exactly with episodes.
-#' @source \url{http://bachelor-nation.wikia.com/wiki/Bachelor_Nation_Wikia}
+#' @source \url{https://bachelor-nation.fandom.com/wiki/Bachelor_Nation_Wiki}
 #' and then missing seasons were filled in by ABC and FiveThirtyEight staffers.
 "bachelorette"
 
@@ -78,7 +79,7 @@
 #' Candy Power Ranking
 #'
 #' The raw data behind the story "The Ultimate Halloween Candy Power Ranking"
-#' \url{http://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/}.
+#' \url{https://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/}.
 #'
 #' @format A data frame with 85 rows representing Halloween candy and 13 variables:
 #' \describe{
@@ -99,7 +100,8 @@
 #' @source See \url{https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking}
 #' @examples
 #' # To convert data frame to tidy data (long) format, run:
-#' library(tidyverse)
+#' library(dplyr)
+#' library(tidyr)
 #' library(stringr)
 #' candy_rankings_tidy <- candy_rankings %>%
 #'   gather(characteristics, present, -c(competitorname, sugarpercent, pricepercent, winpercent)) %>%
@@ -194,7 +196,10 @@
 #' "Al Gore's New Movie Exposes The Big Flaw In Online Movie Ratings"
 #' \url{https://fivethirtyeight.com/features/al-gores-new-movie-exposes-the-big-flaw-in-online-movie-ratings/}.
 #'
-#' @format A data frame with 80053 rows representing movie ratings and 27 variables:
+#' @format Because of R package size restrictions, only a preview of the
+#' first 10 rows of this dataset is included; to obtain the entire dataset
+#' (80,053 rows) see Examples below. The preview is a data frame with 10 rows 
+#' representing movie ratings and 27 variables:
 #' \describe{
 #'   \item{timestamp}{The date at which the rating was recorded.}
 #'   \item{respondents}{The number of respondents in a category associated with a given timestamp.}
@@ -224,11 +229,29 @@
 #'   \item{pct_9}{The percentage of votes denoting a rating of nine that respondents gave.}
 #'   \item{pct_10}{The percentage of votes denoting a rating of ten that respondents gave.}
 #' }
-#' @source IMBD \url{http://www.imdb.com/title/tt6322922/ratings} and
+#' @source IMBD \url{https://www.imdb.com/title/tt6322922/ratings} and
 #' see \url{https://github.com/fivethirtyeight/data/tree/master/inconvenient-sequel}
 #' @examples
+#' # To obtain the entire dataset, run the following code:
+#' library(readr)
+#' library(dplyr)
+#' ratings <- 
+#'   "https://github.com/fivethirtyeight/data/raw/master/inconvenient-sequel/ratings.csv" %>%
+#'   read_csv() %>%
+#'   mutate(category = as.factor(category)) %>% 
+#'   rename(
+#'     votes_1 = `1_votes`, votes_2 = `2_votes`, votes_3 = `3_votes`, 
+#'     votes_4 = `4_votes`, votes_5 = `5_votes`, votes_6 = `6_votes`,
+#'     votes_7 = `7_votes`, votes_8 = `8_votes`, votes_9 = `9_votes`,
+#'     votes_10 = `10_votes`,
+#'     pct_1 = `1_pct`, pct_2 = `2_pct`, pct_3 = `3_pct`, pct_4 = `4_pct`,
+#'     pct_5 = `5_pct`, pct_6 = `6_pct`, pct_7 = `7_pct`, pct_8 = `8_pct`,
+#'     pct_9 = `9_pct`, pct_10 = `10_pct`
+#'   )
+#' 
 #' # To convert data frame to tidy data (long) format, run:
-#' library(tidyverse)
+#' library(dplyr)
+#' library(tidyr)
 #' library(stringr)
 #' ratings_tidy <- ratings %>%
 #'   gather(votes, count, -c(timestamp, respondents, category, link, average, mean, median)) %>%
@@ -261,18 +284,18 @@
 #' Data was collected on August 27, 2017 between 12:05 a.m. and 1:15 a.m. EDT
 #' using the Twitter streaming API. \url{https://github.com/fivethirtyeight/data/tree/master/mayweather-mcgregor}
 #' @examples
-#' # To obtain the entire dataset, run the code inside the following if statement:
-#' if(FALSE){
-#'   library(tidyverse)
-#'   url <-
-#'    "https://raw.githubusercontent.com/fivethirtyeight/data/master/mayweather-mcgregor/tweets.csv"
-#'   mayweather_mcgregor_tweets <- read_csv(url) %>%
-#'     mutate(
-#'       emojis = as.logical(emojis),
-#'       retweeted = as.logical(retweeted),
-#'       id = as.character(id)
-#'     )
-#' }
+#' # To obtain the entire dataset, run the following code:
+#' library(dplyr)
+#' library(readr)
+#' 
+#' mayweather_mcgregor_tweets <-
+#'   "https://raw.githubusercontent.com/fivethirtyeight/data/master/mayweather-mcgregor/tweets.csv" %>%
+#'   read_csv() %>%
+#'   mutate(
+#'     emojis = as.logical(emojis),
+#'     retweeted = as.logical(retweeted),
+#'     id = as.character(id)
+#'   )
 "mayweather_mcgregor_tweets"
 
 
@@ -319,7 +342,9 @@
 #' @examples
 #' # To obtain the entire dataset, run the code inside the following if statement:
 #' if(FALSE){
-#'   library(tidyverse)
+#'   library(dplyr)
+#'   library(tidyr)
+#'   library(readr)
 #'   mlb_elo <- read_csv("https://projects.fivethirtyeight.com/mlb-api/mlb_elo.csv") %>%
 #'     mutate(
 #'       playoff = as.factor(playoff),
@@ -335,10 +360,14 @@
 #' \url{https://projects.fivethirtyeight.com/soccer-predictions/} and "Global Club Soccer Rankings"
 #' \url{https://projects.fivethirtyeight.com/global-club-soccer-rankings/}.
 #'
-#' @format A data frame with 10182 rows representing soccer matches and 13 variables:
+#' @format Because of R package size restrictions, only a preview of the
+#' first 10 rows of this dataset is included; to obtain the entire dataset
+#' (30,533 rows) see Examples below. The preview is a data frame with 10 rows 
+#' representing soccer matches and 13 variables:
 #' \describe{
 #'   \item{date}{The date that the match took place.}
 #'   \item{league_id}{A numerical identifier of the league within which the match was played.}
+#'   \item{league}{League name.}
 #'   \item{team1}{One team that participated in the match.}
 #'   \item{team2}{The other team that participated in the match.}
 #'   \item{spi1}{The SPI score of team1.}
@@ -348,6 +377,8 @@
 #'   \item{probtie}{The probability that the match would have resulted in a tie.}
 #'   \item{proj_score1}{The predicted number of goals that team1 would have scored.}
 #'   \item{proj_score2}{The predicted number of goals that team2 would have scored.}
+#'   \item{importance1}{}
+#'   \item{importance2}{}
 #'   \item{score1}{The number of goals that team1 scored.}
 #'   \item{score2}{The number of goals that team2 scored.}
 #'   \item{xg1}{}
@@ -359,6 +390,13 @@
 #' }
 #' @source See \url{https://github.com/fivethirtyeight/data/blob/master/soccer-spi/README.md}
 #' @seealso \code{\link{spi_global_rankings}}
+#' @examples 
+#' # To obtain the entire dataset, run the following code:
+#' library(readr)
+#' library(dplyr)
+#' spi_matches <- 
+#'   "https://projects.fivethirtyeight.com/soccer-api/club/spi_matches.csv" %>% 
+#'   read_csv() 
 "spi_matches"
 
 

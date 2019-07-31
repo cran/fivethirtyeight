@@ -37,7 +37,7 @@
 }}
 \source{
 National Survey on Drug Use and Health from the Substance Abuse and
-Mental Health Data Archive \url{http://www.icpsr.umich.edu/icpsrweb/content/SAMHDA/index.html}.
+Mental Health Data Archive \url{https://www.icpsr.umich.edu/icpsrweb/content/SAMHDA/index.html}.
 }
 \usage{
 drug_use
@@ -50,7 +50,8 @@ It covers usage of 13 drugs in the past 12 months across 17 age groups.
 }
 \examples{
 # To convert data frame to tidy data (long) format, run:
-library(tidyverse)
+library(dplyr)
+library(tidyr)
 library(stringr)
 use <- drug_use \%>\%
   select(age, n, ends_with("_use")) \%>\%
