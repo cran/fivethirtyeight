@@ -3,7 +3,6 @@
 \docType{package}
 \name{fivethirtyeight}
 \alias{fivethirtyeight}
-\alias{fivethirtyeight-package}
 \title{fivethirtyeight: Data and Code Behind the Stories and Interactives at 'FiveThirtyEight'}
 \description{
 An R package that provides access to the code and data sets
@@ -15,20 +14,21 @@ officially published by 538. Contribute to this package at
 \examples{
 # Example usage:
 library(fivethirtyeight)
-head(bechdel)
+\donttest{head(bechdel)}
 
 # All information about any data set can be found in the help file:
-?bechdel
+\donttest{?bechdel}
 
 # To view a list of all data sets:
-data(package = "fivethirtyeight")
+\donttest{data(package = "fivethirtyeight")}
 
 # To view a detailed list of all data sets:
-vignette("fivethirtyeight", package = "fivethirtyeight")
+\donttest{vignette("fivethirtyeight", package = "fivethirtyeight")}
 
-# Some data sets include vignettes with an example analysis:
-vignette("bechdel", package = "fivethirtyeight")
+# Some data sets include vignettes with an example analysis 
+# (these are in the fivethirtyeightdata package):
+\donttest{vignette("bechdel", package = "fivethirtyeightdata")}
 
-# To browse all vignettes:
-browseVignettes(package = "fivethirtyeight")
+# To browse all vignettes (these are in the fivethirtyeightdata package):
+\donttest{browseVignettes(package = "fivethirtyeightdata")}
 }

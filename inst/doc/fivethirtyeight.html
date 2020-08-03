@@ -1,24 +1,127 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Albert Y. Kim, Chester Ismay, and Jennifer Chunn" />
 
-<meta name="date" content="2019-07-31" />
+<meta name="date" content="2020-08-02" />
 
 <title>fivethirtyeight Package</title>
 
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -32,9 +135,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -203,7 +303,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -218,22 +319,47 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">fivethirtyeight Package</h1>
 <h4 class="author">Albert Y. Kim, Chester Ismay, and Jennifer Chunn</h4>
-<h4 class="date">2019-07-31</h4>
+<h4 class="date">2020-08-02</h4>
 
 
 
-<div id="note" class="section level2">
-<h2>Note</h2>
-<p>All 127 datasets included in the <code>fivethirtyeight</code> package are listed in the next section. However due to CRAN-hosted R package size restrictions, the following 10 datasets out of 127 only consist of a preview of the first 10 rows of the full dataset. Code to load the full dataset into R are provided in the respective help file example. For example, type <code>?house_district_forecast</code> into R.</p>
-<pre><code>##  [1] &quot;comic_characters&quot;           &quot;goose&quot;                     
-##  [3] &quot;house_district_forecast&quot;    &quot;mayweather_mcgregor_tweets&quot;
-##  [5] &quot;mlb_elo&quot;                    &quot;nba_carmelo&quot;               
-##  [7] &quot;nfl_elo&quot;                    &quot;ratings&quot;                   
-##  [9] &quot;senators&quot;                   &quot;spi_matches&quot;</code></pre>
+<div id="acknowledgment" class="section level2">
+<h2>Acknowledgment</h2>
+<p>We are aware of <a href="https://twitter.com/MonaChalabi/status/1270715883531300866" target="_blank">this tweet</a> by Mona Chalabi. Although, we have not yet decided the future of the <code>fivethirtyeight</code> package (and subsequently, the <code>fivethirtyeightdata</code> package), we re-iterate that this package is not officially published by 538.</p>
+</div>
+<div id="note-on-large-datasets" class="section level2">
+<h2>Note on large datasets</h2>
+<p>There are 128 datasets included in the <code>fivethirtyeight</code> package. However, there are also 19 datasets that could not be included in <code>fivethirtyeight</code> due to CRAN package size restrictions:</p>
+<pre><code>##  [1] &quot;castle_solutions&quot;           &quot;castle_solutions_2&quot;        
+##  [3] &quot;castle_solutions_3&quot;         &quot;comic_characters&quot;          
+##  [5] &quot;goose&quot;                      &quot;house_district_forecast&quot;   
+##  [7] &quot;mayweather_mcgregor_tweets&quot; &quot;mlb_elo&quot;                   
+##  [9] &quot;nba_all_elo&quot;                &quot;nba_carmelo&quot;               
+## [11] &quot;nba_elo&quot;                    &quot;nfl_elo&quot;                   
+## [13] &quot;quasi_winshares&quot;            &quot;raptor_by_player&quot;          
+## [15] &quot;raptor_by_team&quot;             &quot;ratings&quot;                   
+## [17] &quot;senators&quot;                   &quot;spi_matches&quot;               
+## [19] &quot;twitter_presidents&quot;</code></pre>
+<p>These 19 datasets are included in the <code>fivethirtyeightdata</code> add-on package<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. So for example, to load the <code>senators</code> dataset, run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(fivethirtyeight)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">library</span>(fivethirtyeightdata)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>senators</span></code></pre></div>
 </div>
 <div id="all-datasets" class="section level2">
 <h2>All datasets</h2>
-<table>
+<p>All 128 + 19 = 147 datasets between the <code>fivethirtyeight</code> and <code>fivethirtyeightdata</code> packages are listed here.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="7%"></col>
+<col width="23%"></col>
+<col width="6%"></col>
+<col width="6%"></col>
+<col width="6%"></col>
+<col width="7%"></col>
+<col width="6%"></col>
+<col width="2%"></col>
+<col width="34%"></col>
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Data Frame Name</th>
@@ -242,6 +368,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <th align="left">Author 1</th>
 <th align="left">Author 2</th>
 <th align="left">Author 3</th>
+<th align="left">In fivethirtyeightdata?</th>
 <th align="left">Date</th>
 <th align="left">URL</th>
 </tr>
@@ -254,6 +381,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Carl Bialik</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-05-13</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/" class="uri">http://fivethirtyeight.com/features/some-people-are-too-superstitious-to-have-a-baby-on-friday-the-13th/</a></td>
 </tr>
@@ -262,6 +390,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Some People Are Too Superstitious To Have A Baby On Friday The 13th</td>
 <td align="left">Parenting</td>
 <td align="left">Carl Bialik</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2016-05-13</td>
@@ -274,6 +403,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Perry Bacon Jr.</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-06-15</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/why-the-gop-is-so-hell-bent-on-passing-an-unpopular-health-care-bill" class="uri">https://fivethirtyeight.com/features/why-the-gop-is-so-hell-bent-on-passing-an-unpopular-health-care-bill</a></td>
 </tr>
@@ -282,6 +412,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Should Travelers Avoid Flying Airlines That Have Had Crashes in the Past?</td>
 <td align="left">Airline Safety</td>
 <td align="left">Nate Silver</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2014-07-18</td>
@@ -294,6 +425,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Ella Koeze</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-04-27</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/trump-might-be-the-first-president-to-scrap-a-national-monument/" class="uri">https://fivethirtyeight.com/features/trump-might-be-the-first-president-to-scrap-a-national-monument/</a></td>
 </tr>
@@ -304,6 +436,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Dhrimil Mehta</td>
 <td align="left">Janie Velencia</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2018-08-31</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/how-much-trouble-is-ted-cruz-really-in/" class="uri">https://fivethirtyeight.com/features/how-much-trouble-is-ted-cruz-really-in/</a></td>
 </tr>
@@ -312,6 +445,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Joining The Avengers Is As Deadly As Jumping Off A Four-Story Building</td>
 <td align="left">Movies</td>
 <td align="left">Walt Hickey</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-05-12</td>
@@ -324,6 +458,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Ella Koeze</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-05-22</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-bachelorette/" class="uri">https://fivethirtyeight.com/features/the-bachelorette/</a></td>
 </tr>
@@ -332,6 +467,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Dear Mona, Which State Has The Worst Drivers?</td>
 <td align="left">Hope the Numbers Help</td>
 <td align="left">Mona Chalabi</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2014-10-24</td>
@@ -344,6 +480,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-04-01</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/" class="uri">http://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/</a></td>
 </tr>
@@ -352,6 +489,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Straight Outta Compton Is The Rare Biopic Not About White Dudes</td>
 <td align="left">Movies</td>
 <td align="left">Hannah Fingerhut</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-08-14</td>
@@ -364,6 +502,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-04-14</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/a-statistical-analysis-of-the-work-of-bob-ross/" class="uri">http://fivethirtyeight.com/features/a-statistical-analysis-of-the-work-of-bob-ross/</a></td>
 </tr>
@@ -372,6 +511,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Two Years In, Turnover In Trump’s Cabinet Is Still Historically High</td>
 <td align="left">Trump Cabinet</td>
 <td align="left">Nathaniel Rakich</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2019-01-08</td>
@@ -384,6 +524,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Harry Enten</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-01-14</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/2016-president-who-is-going-to-run/" class="uri">http://fivethirtyeight.com/datalab/2016-president-who-is-going-to-run/</a></td>
 </tr>
@@ -392,6 +533,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Who Will Run For President: Romney Is Out</td>
 <td align="left">The Visible Primary</td>
 <td align="left">Harry Enten</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-01-30</td>
@@ -404,6 +546,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Harry Enten</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-01-14</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/2016-president-who-is-going-to-run/" class="uri">http://fivethirtyeight.com/datalab/2016-president-who-is-going-to-run/</a></td>
 </tr>
@@ -412,6 +555,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Who Will Run For President: Romney Is Out</td>
 <td align="left">The Visible Primary</td>
 <td align="left">Harry Enten</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-01-30</td>
@@ -424,124 +568,181 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-10-27</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/" class="uri">http://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>castle_solutions</code></td>
+<td align="left">Can You Rule Riddler Nations?</td>
+<td align="left">The Riddler</td>
+<td align="left">Oliver Roeder</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">2017-02-03</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/can-you-rule-riddler-nation/" class="uri">https://fivethirtyeight.com/features/can-you-rule-riddler-nation/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>castle_solutions_2</code></td>
+<td align="left">The Battle For Riddler Nation, Round 2</td>
+<td align="left">The Riddler</td>
+<td align="left">Oliver Roeder</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">2017-05-19</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/" class="uri">https://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>castle_solutions_3</code></td>
+<td align="left">Riddler Nation - Castles Puzzle Final</td>
+<td align="left">The Riddler</td>
+<td align="left">Oliver Roeder</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">2019-05-03</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/are-you-the-best-warlord/" class="uri">https://fivethirtyeight.com/features/are-you-the-best-warlord/</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>chess_transfers</code></td>
 <td align="left">American Chess Is Great Again</td>
 <td align="left">Chess</td>
 <td align="left">Oliver Roeder</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-08-08</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/american-chess-is-great-again/" class="uri">https://fivethirtyeight.com/features/american-chess-is-great-again/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>classic_rock_raw_data</code></td>
 <td align="left">Why Classic Rock Isn’t What It Used To Be</td>
 <td align="left">Music</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-07-07</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/" class="uri">http://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>classic_rock_song_list</code></td>
 <td align="left">Why Classic Rock Isn’t What It Used To Be</td>
 <td align="left">Music</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-07-07</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/" class="uri">http://fivethirtyeight.com/features/why-classic-rock-isnt-what-it-used-to-be/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>college_all_ages</code></td>
 <td align="left">The Economic Guide To Picking A College Major</td>
 <td align="left"></td>
 <td align="left">Ben Casselman</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-09-12</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/" class="uri">http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>college_grad_students</code></td>
 <td align="left">The Economic Guide To Picking A College Major</td>
 <td align="left"></td>
 <td align="left">Ben Casselman</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-09-12</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/" class="uri">http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>college_recent_grads</code></td>
 <td align="left">The Economic Guide To Picking A College Major</td>
 <td align="left"></td>
 <td align="left">Ben Casselman</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-09-12</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/" class="uri">http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>comic_characters</code></td>
 <td align="left">Comic Books Are Still Made By Men, For Men And About Men</td>
 <td align="left">Comic Books</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left">Yes</td>
 <td align="left">2014-10-13</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/women-in-comic-books/" class="uri">http://fivethirtyeight.com/features/women-in-comic-books/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>comma_survey</code></td>
 <td align="left">Elitist, Superfluous, Or Popular? We Polled Americans on the Oxford Comma</td>
 <td align="left"></td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-06-17</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/elitist-superfluous-or-popular-we-polled-americans-on-the-oxford-comma/" class="uri">http://fivethirtyeight.com/datalab/elitist-superfluous-or-popular-we-polled-americans-on-the-oxford-comma/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>congress_age</code></td>
 <td align="left">Both Republicans And Democrats Have an Age Problem</td>
 <td align="left">Age</td>
 <td align="left">Nate Silver</td>
 <td align="left">Dhrumil Mehta</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-04-28</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/both-republicans-and-democrats-have-an-age-problem/" class="uri">http://fivethirtyeight.com/features/both-republicans-and-democrats-have-an-age-problem/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>cousin_marriage</code></td>
 <td align="left">How Many Americans Are Married To Their Cousins?</td>
 <td align="left">Dear Mona</td>
 <td align="left">Mona Chalabi</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-05-15</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/how-many-americans-are-married-to-their-cousins/" class="uri">https://fivethirtyeight.com/features/how-many-americans-are-married-to-their-cousins/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>daily_show_guests</code></td>
 <td align="left">Every Guest Jon Stewart Ever Had On ‘The Daily Show’</td>
 <td align="left">TV</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-08-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/" class="uri">http://fivethirtyeight.com/datalab/every-guest-jon-stewart-ever-had-on-the-daily-show/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dem_candidates</code></td>
+<td align="left">We Researched Hundreds Of Races. Here’s Who Democrats Are Nominating</td>
+<td align="left">2018 Election</td>
+<td align="left">Meredith Conroy</td>
+<td align="left">Mai Nguyen</td>
+<td align="left">Nathaniel Rakich</td>
+<td align="left"></td>
+<td align="left">2018-08-10</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/democrats-primaries-candidates-demographics/" class="uri">https://fivethirtyeight.com/features/democrats-primaries-candidates-demographics/</a></td>
 </tr>
 <tr class="even">
 <td align="left"><code>democratic_bench</code></td>
 <td align="left">Some Democrats Who Could Step Up If Hillary Isn’t Ready For Hillary</td>
 <td align="left">2016 Election</td>
 <td align="left">Harry Enten</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-03-27</td>
@@ -554,6 +755,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Mona Chalabi</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-08-13</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/" class="uri">http://fivethirtyeight.com/datalab/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/</a></td>
 </tr>
@@ -564,14 +766,38 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Anna Maria Barry-Jester</td>
 <td align="left">Andrew Flowers</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-04-23</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/how-baby-boomers-get-high/" class="uri">http://fivethirtyeight.com/datalab/how-baby-boomers-get-high/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>elasticity_by_district</code></td>
+<td align="left">Election Update: The Most (And Least) Elastic States And Districts</td>
+<td align="left">2018 Election</td>
+<td align="left">Nathaniel Rakich</td>
+<td align="left">Nate Silver</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/election-update-the-house-districts-that-swing-the-most-and-least-with-the-national-mood/" class="uri">https://fivethirtyeight.com/features/election-update-the-house-districts-that-swing-the-most-and-least-with-the-national-mood/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>elasticity_by_state</code></td>
+<td align="left">Election Update: The Most (And Least) Elastic States And Districts</td>
+<td align="left">2018 Election</td>
+<td align="left">Nathaniel Rakich</td>
+<td align="left">Nate Silver</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/election-update-the-house-districts-that-swing-the-most-and-least-with-the-national-mood/" class="uri">https://fivethirtyeight.com/features/election-update-the-house-districts-that-swing-the-most-and-least-with-the-national-mood/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>elo_blatter</code></td>
 <td align="left">Blatter’s Reign At FIFA Hasn’t Helped Soccer’s Poor</td>
 <td align="left">World Soccer</td>
 <td align="left">Nate Silver</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-06-09</td>
@@ -584,6 +810,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Harry Enten</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-06-15</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/pols-and-polls-say-the-same-thing-jeb-bush-is-a-weak-front-runner/" class="uri">http://fivethirtyeight.com/features/pols-and-polls-say-the-same-thing-jeb-bush-is-a-weak-front-runner/</a></td>
 </tr>
@@ -594,6 +821,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Aarom Bycoffe</td>
 <td align="left">Rachael Dottle</td>
 <td align="left">Dustin Dienhart and Derek Shan</td>
+<td align="left"></td>
 <td align="left">2019-05-29</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/2020-endorsements/democratic-primary/" class="uri">https://projects.fivethirtyeight.com/2020-endorsements/democratic-primary/</a></td>
 </tr>
@@ -602,6 +830,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Be Suspicious Of Online Movie Ratings, Especially Fandango’s</td>
 <td align="left">Movies</td>
 <td align="left">Walt Hickey</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-10-15</td>
@@ -614,44 +843,93 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-05-28</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/how-to-break-fifa/" class="uri">http://fivethirtyeight.com/features/how-to-break-fifa/</a></td>
 </tr>
 <tr class="even">
+<td align="left"><code>fight_songs</code></td>
+<td align="left">Our Guide To The Exuberant Nonsense Of College Fight Songs</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-08-30</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/college-fight-song-lyrics/" class="uri">https://projects.fivethirtyeight.com/college-fight-song-lyrics/</a></td>
+</tr>
+<tr class="odd">
 <td align="left"><code>flying</code></td>
 <td align="left">41 Percent Of Fliers Think You’re Rude If You Recline Your Seat</td>
 <td align="left"></td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-09-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/airplane-etiquette-recline-seat/" class="uri">http://fivethirtyeight.com/datalab/airplane-etiquette-recline-seat/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>food_world_cup</code></td>
 <td align="left">The FiveThirtyEight International Food Association’s 2014 World Cup</td>
 <td align="left">FiveThirtyAte</td>
 <td align="left">Nate Silver</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-06-25</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-fivethirtyeight-international-food-associations-2014-world-cup/" class="uri">http://fivethirtyeight.com/features/the-fivethirtyeight-international-food-associations-2014-world-cup/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>forecast_results_2018</code></td>
 <td align="left">How FiveThirtyEight’s 2018 Midterm Forecasts Did</td>
 <td align="left">2018 Election</td>
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2018-12-04</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/how-fivethirtyeights-2018-midterm-forecasts-did/" class="uri">https://fivethirtyeight.com/features/how-fivethirtyeights-2018-midterm-forecasts-did/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>foul_balls</code></td>
+<td align="left">We Watched 906 Foul Balls To Find Out Where The Most Dangerous Ones</td>
+<td align="left">MLB</td>
+<td align="left">Annette Choi</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-07-15</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/we-watched-906-foul-balls-to-find-out-where-the-most-dangerous-ones-land/" class="uri">https://fivethirtyeight.com/features/we-watched-906-foul-balls-to-find-out-where-the-most-dangerous-ones-land/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>generic_polllist</code></td>
+<td align="left">Are Democrats Winning The Race For Congress?</td>
+<td align="left"></td>
+<td align="left">Aaron Bycoffe</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Nate Silver</td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/congress-generic-ballot-polls/" class="uri">https://projects.fivethirtyeight.com/congress-generic-ballot-polls/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>generic_topline</code></td>
+<td align="left">Are Democrats Winning The Race For Congress?</td>
+<td align="left"></td>
+<td align="left">Aaron Bycoffe</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left">Nate Silver</td>
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/congress-generic-ballot-polls/" class="uri">https://projects.fivethirtyeight.com/congress-generic-ballot-polls/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>google_trends</code></td>
 <td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
 <td align="left">Puerto Rico</td>
 <td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2017-10-12</td>
@@ -664,6 +942,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left">Yes</td>
 <td align="left">NA</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/goose-egg-new-save-stat-relief-pitchers/" class="uri">https://fivethirtyeight.com/features/goose-egg-new-save-stat-relief-pitchers/</a></td>
 </tr>
@@ -672,6 +951,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">How FiveThirtyEight’s 2018 Midterm Forecasts Did</td>
 <td align="left">2018 Election</td>
 <td align="left">Nate Silver</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2018-11-06</td>
@@ -684,6 +964,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2018-11-06</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/2018-midterm-election-forecast/governor/" class="uri">https://projects.fivethirtyeight.com/2018-midterm-election-forecast/governor/</a></td>
 </tr>
@@ -692,6 +973,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Higher Rates Of Hate Crimes Are Tied To Income Inequality</td>
 <td align="left">Hate Crimes</td>
 <td align="left">Maimuna Majumder</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2017-01-23</td>
@@ -704,6 +986,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Allison McCann</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-07-14</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/clinton-trump-hip-hop-lyrics/" class="uri">https://projects.fivethirtyeight.com/clinton-trump-hip-hop-lyrics/</a></td>
 </tr>
@@ -712,6 +995,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The NCAA Bracket: Checking Our Work</td>
 <td align="left">March Madness</td>
 <td align="left">Nate Silver</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2014-03-27</td>
@@ -724,6 +1008,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-09-17</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/how-the-fivethirtyeight-senate-forecast-model-works/" class="uri">http://fivethirtyeight.com/features/how-the-fivethirtyeight-senate-forecast-model-works/</a></td>
 </tr>
@@ -734,6 +1019,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left">Yes</td>
 <td align="left">2018-11-06</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/2018-midterm-election-forecast/house/" class="uri">https://projects.fivethirtyeight.com/2018-midterm-election-forecast/house/</a></td>
 </tr>
@@ -744,58 +1030,86 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2018-11-06</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/2018-midterm-election-forecast/house/" class="uri">https://projects.fivethirtyeight.com/2018-midterm-election-forecast/house/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>impeachment_polls</code></td>
+<td align="left">Did Americans Support Removing Trump From Office?</td>
+<td align="left"></td>
+<td align="left">Aaron Bycoffe</td>
+<td align="left">Ella Koeze</td>
+<td align="left">Nathaniel Rakich</td>
+<td align="left"></td>
+<td align="left">2020-02-12</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/impeachment-polls/" class="uri">https://projects.fivethirtyeight.com/impeachment-polls/</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>librarians</code></td>
 <td align="left">Where Are America’s Librarians?</td>
 <td align="left">Jobs</td>
 <td align="left">Mona Chalabi</td>
 <td align="left">Andrew Flowers</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-04-11</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/where-are-americas-librarians/" class="uri">http://fivethirtyeight.com/datalab/where-are-americas-librarians/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>love_actually_adj</code></td>
 <td align="left">The Definitive Analysis Of ‘Love Actually,’ The Greatest Christmas Movie Of Our Time</td>
 <td align="left">Movies</td>
 <td align="left">Walt Hickey</td>
 <td align="left">Gus Wezerek</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-12-22</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-definitive-analysis-of-love-actually-the-greatest-christmas-movie-of-our-time/" class="uri">http://fivethirtyeight.com/features/the-definitive-analysis-of-love-actually-the-greatest-christmas-movie-of-our-time/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>love_actually_appearance</code></td>
 <td align="left">The Definitive Analysis Of ‘Love Actually,’ The Greatest Christmas Movie Of Our Time</td>
 <td align="left">Movies</td>
 <td align="left">Walt Hickey</td>
 <td align="left">Gus Wezerek</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-12-22</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-definitive-analysis-of-love-actually-the-greatest-christmas-movie-of-our-time/" class="uri">http://fivethirtyeight.com/features/the-definitive-analysis-of-love-actually-the-greatest-christmas-movie-of-our-time/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>mad_men</code></td>
 <td align="left">Mad Men Is Ending. What’s Next For The Cast?</td>
 <td align="left">TV</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-05-15</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/mad-men-is-ending-whats-next-for-the-cast/" class="uri">http://fivethirtyeight.com/datalab/mad-men-is-ending-whats-next-for-the-cast/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>male_flight_attend</code></td>
 <td align="left">Dear Mona, How Many Flight Attendants Are Men?</td>
 <td align="left">Hope the Numbers Help</td>
 <td align="left">Mona Chalabi</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-10-03</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/dear-mona-how-many-flight-attendants-are-men/" class="uri">http://fivethirtyeight.com/datalab/dear-mona-how-many-flight-attendants-are-men/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>masculinity_survey</code></td>
+<td align="left">What Do Men Think It Means To Be A Man?</td>
+<td align="left">Gender</td>
+<td align="left">Ella Koeze</td>
+<td align="left">Anna Maria Barry-Jester</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2018-06-20</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/what-do-men-think-it-means-to-be-a-man" class="uri">https://fivethirtyeight.com/features/what-do-men-think-it-means-to-be-a-man</a></td>
 </tr>
 <tr class="even">
 <td align="left"><code>mayweather_mcgregor_tweets</code></td>
@@ -804,14 +1118,38 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Dhrumil Mehta</td>
 <td align="left">Oliver Roeder</td>
 <td align="left">Rachel Dottle</td>
+<td align="left">Yes</td>
 <td align="left">2017-08-30</td>
 <td align="left"><a href="https://fivethirtyeight.com/?post_type=fte_features&amp;p=161615" class="uri">https://fivethirtyeight.com/?post_type=fte_features&amp;p=161615</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>media_mentions_cable</code></td>
+<td align="left">Beto O’Rourke Ignored Cable News - And It Ignored Him</td>
+<td align="left">2020 Election</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-05-20</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/beto-orourke-ignored-cable-news-and-it-ignored-him/" class="uri">https://fivethirtyeight.com/features/beto-orourke-ignored-cable-news-and-it-ignored-him/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>media_mentions_online</code></td>
+<td align="left">Beto O’Rourke Ignored Cable News - And It Ignored Him</td>
+<td align="left">2020 Election</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-05-20</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/beto-orourke-ignored-cable-news-and-it-ignored-him/" class="uri">https://fivethirtyeight.com/features/beto-orourke-ignored-cable-news-and-it-ignored-him/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>mediacloud_hurricanes</code></td>
 <td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
 <td align="left">Puerto Rico</td>
 <td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2017-10-12</td>
@@ -824,6 +1162,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Dhrumil Mehta</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-10-12</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
 </tr>
@@ -832,6 +1171,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
 <td align="left">Puerto Rico</td>
 <td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2017-10-12</td>
@@ -844,6 +1184,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Dhrumil Mehta</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-10-12</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
 </tr>
@@ -852,6 +1193,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The Best MLB All-Star Teams Ever</td>
 <td align="left">Baseball</td>
 <td align="left">Neil Paine</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-07-18</td>
@@ -864,6 +1206,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Neil Paine</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-07-18</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-best-mlb-all-star-teams-ever/" class="uri">http://fivethirtyeight.com/features/the-best-mlb-all-star-teams-ever/</a></td>
 </tr>
@@ -874,6 +1217,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Jay Boice</td>
 <td align="left">Reuben Fischer-Baum</td>
 <td align="left"></td>
+<td align="left">Yes</td>
 <td align="left">2017-11-02</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-mlb/" class="uri">https://projects.fivethirtyeight.com/complete-history-of-mlb/</a></td>
 </tr>
@@ -882,6 +1226,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Both Parties Think The Mueller Report Was Fair. They Just Completely Disagree On What It Says.</td>
 <td align="left">Russia Investigation</td>
 <td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">NA</td>
@@ -894,6 +1239,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Jeff Asher</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-10-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/" class="uri">http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/</a></td>
 </tr>
@@ -904,68 +1250,97 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Jeff Asher</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-10-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/" class="uri">http://fivethirtyeight.com/features/a-handful-of-cities-are-driving-2016s-rise-in-murders/</a></td>
 </tr>
 <tr class="odd">
+<td align="left"><code>nba_all_elo</code></td>
+<td align="left">The Complete History Of The NBA</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">2020-03-12</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nba/#raptors" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nba/#raptors</a></td>
+</tr>
+<tr class="even">
 <td align="left"><code>nba_carmelo</code></td>
 <td align="left">The Complete History Of The NBA</td>
 <td align="left"></td>
 <td align="left">Reuben Fischer-Baum</td>
 <td align="left">Nate Silver</td>
 <td align="left"></td>
+<td align="left">Yes</td>
 <td align="left">NA</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nba/#warriors" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nba/#warriors</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>nba_draft_2015</code></td>
 <td align="left">Projecting The Top 50 Players In The 2015 NBA Draft Class</td>
 <td align="left">Basketball</td>
 <td align="left">Neil Paine</td>
 <td align="left">Zach Bradshaw</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-06-19</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/projecting-the-top-50-players-in-the-2015-nba-draft-class/" class="uri">http://fivethirtyeight.com/features/projecting-the-top-50-players-in-the-2015-nba-draft-class/</a></td>
 </tr>
+<tr class="even">
+<td align="left"><code>nba_draymond</code></td>
+<td align="left">A Better Way to Evaluate NBA Defense</td>
+<td align="left">NBA</td>
+<td align="left">Nate Silver</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-07-09</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/a-better-way-to-evaluate-nba-defense/" class="uri">https://fivethirtyeight.com/features/a-better-way-to-evaluate-nba-defense/</a></td>
+</tr>
 <tr class="odd">
 <td align="left"><code>nba_elo</code></td>
-<td align="left">NA</td>
+<td align="left">The Complete History Of The NBA</td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left">Yes</td>
+<td align="left">2020-03-12</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nba/#raptors" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nba/#raptors</a></td>
 </tr>
 <tr class="even">
+<td align="left"><code>nba_elo_latest</code></td>
+<td align="left">The Complete History Of The NBA</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2020-03-12</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nba/#raptors" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nba/#raptors</a></td>
+</tr>
+<tr class="odd">
 <td align="left"><code>nba_tattoos</code></td>
 <td align="left">Accurately Counting NBA Tattoos Isn’t Easy, Even If You’re Up Close</td>
 <td align="left"></td>
 <td align="left">Mike Wilson</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-06-07</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/accurately-counting-nba-tattoos-isnt-easy-even-if-youre-up-close/" class="uri">http://fivethirtyeight.com/datalab/accurately-counting-nba-tattoos-isnt-easy-even-if-youre-up-close/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>ncaa_w_bball_tourney</code></td>
 <td align="left">The Rise And Fall of Women’s College Basketball Dynasties</td>
 <td align="left">College Basketball</td>
 <td align="left">Neil Paine</td>
 <td align="left">Sara Ziegler</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2019-03-06</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/louisiana-tech-was-the-uconn-of-the-80s/" class="uri">https://fivethirtyeight.com/features/louisiana-tech-was-the-uconn-of-the-80s/</a></td>
-</tr>
-<tr class="even">
-<td align="left"><code>nfl_elo</code></td>
-<td align="left">The Complete History of the NFL</td>
-<td align="left"></td>
-<td align="left">Reuben Fischer-Baum</td>
-<td align="left">Nate Silver</td>
-<td align="left">Jay Boice, Matthew Conlen</td>
-<td align="left">NA</td>
-<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nfl/" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nfl/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>nfl_elo</code></td>
@@ -974,74 +1349,82 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Jay Boice</td>
 <td align="left">Nate Silver</td>
 <td align="left">Gus Wezerek</td>
+<td align="left">Yes</td>
 <td align="left">NA</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/2017-nfl-predictions/" class="uri">https://projects.fivethirtyeight.com/2017-nfl-predictions/</a></td>
 </tr>
 <tr class="even">
+<td align="left"><code>nfl_elo</code></td>
+<td align="left">The Complete History of the NFL</td>
+<td align="left"></td>
+<td align="left">Reuben Fischer-Baum</td>
+<td align="left">Nate Silver</td>
+<td align="left">Jay Boice, Matthew Conlen</td>
+<td align="left">Yes</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/complete-history-of-the-nfl/" class="uri">https://projects.fivethirtyeight.com/complete-history-of-the-nfl/</a></td>
+</tr>
+<tr class="odd">
 <td align="left"><code>nfl_fandom_google</code></td>
 <td align="left">How Every NFL Team’s Fans Lean Politically</td>
 <td align="left">NFL</td>
 <td align="left">Neil Paine</td>
 <td align="left">Harry Enten</td>
 <td align="left">Andrea Jones-Rooy</td>
+<td align="left"></td>
 <td align="left">2017-09-29</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically" class="uri">https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>nfl_fandom_surveymonkey</code></td>
 <td align="left">How Every NFL Team’s Fans Lean Politically</td>
 <td align="left">NFL</td>
 <td align="left">Neil Paine</td>
 <td align="left">Harry Enten</td>
 <td align="left">Andrea Jones-Rooy</td>
+<td align="left"></td>
 <td align="left">2017-09-29</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically" class="uri">https://fivethirtyeight.com/features/how-every-nfl-teams-fans-lean-politically</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>nfl_fav_team</code></td>
 <td align="left">The Rams Are Dead To Me, So I Answered 3,352 Questions To Find A New NFL Team</td>
 <td align="left">NFL</td>
 <td align="left">Blythe Terrell</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-09-08</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-rams-are-dead-to-me-so-i-answered-3352-questions-to-find-a-new-team/" class="uri">http://fivethirtyeight.com/features/the-rams-are-dead-to-me-so-i-answered-3352-questions-to-find-a-new-team/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>nfl_suspensions</code></td>
 <td align="left">The NFL’s Uneven History Of Punishing Domestic Violence</td>
 <td align="left">Suspensions</td>
 <td align="left">Allison McCann</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-08-28</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/nfl-domestic-violence-policy-suspensions/" class="uri">http://fivethirtyeight.com/features/nfl-domestic-violence-policy-suspensions/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>nfltix_div_avgprice</code></td>
 <td align="left">Who Goes To Meaningless NFL Games And Why?</td>
 <td align="left">Bar Fights With Walt</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-12-30</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/who-goes-to-meaningless-nfl-games-and-why/" class="uri">http://fivethirtyeight.com/datalab/who-goes-to-meaningless-nfl-games-and-why/</a></td>
-</tr>
-<tr class="odd">
-<td align="left"><code>nfltix_jets_buy</code></td>
-<td align="left">NA</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">NA</td>
-<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left"><code>nfltix_usa_avg</code></td>
 <td align="left">Who Goes To Meaningless NFL Games And Why?</td>
 <td align="left">Bar Fights With Walt</td>
 <td align="left">Walt Hickey</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2014-12-30</td>
@@ -1054,6 +1437,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Neil Paine</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-08-04</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-football-hall-of-fame-has-a-receiver-problem/" class="uri">http://fivethirtyeight.com/features/the-football-hall-of-fame-has-a-receiver-problem/</a></td>
 </tr>
@@ -1062,6 +1446,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The Football Hall Of Fame Has A Receiver Problem</td>
 <td align="left">Canton</td>
 <td align="left">Neil Paine</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2014-08-04</td>
@@ -1074,12 +1459,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Christie Aschwanden</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-01-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/you-cant-trust-what-you-read-about-nutrition" class="uri">http://fivethirtyeight.com/features/you-cant-trust-what-you-read-about-nutrition</a></td>
 </tr>
 <tr class="even">
-<td align="left"><code>nutrition_survey</code></td>
-<td align="left">NA</td>
+<td align="left"><code>partisan_lean_district</code></td>
+<td align="left">FiveThirtyEight’s Partisan Lean</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
@@ -1088,8 +1475,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>partisan_lean_district</code></td>
+<td align="left"><code>partisan_lean_state</code></td>
 <td align="left">FiveThirtyEight’s Partisan Lean</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
@@ -1104,6 +1492,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Carl Bialik</td>
 <td align="left">Ritchie King</td>
 <td align="left">Andrew Flowers</td>
+<td align="left"></td>
 <td align="left">2016-07-08</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-dallas-shooting-was-among-the-deadliest-for-police-in-u-s-history/" class="uri">https://fivethirtyeight.com/features/the-dallas-shooting-was-among-the-deadliest-for-police-in-u-s-history/</a></td>
 </tr>
@@ -1112,6 +1501,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Where Police Have Killed Americans In 2015</td>
 <td align="left">Police Killings</td>
 <td align="left">Ben Casselman</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-06-03</td>
@@ -1124,6 +1514,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-08-20</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/most-police-dont-live-in-the-cities-they-serve/" class="uri">http://fivethirtyeight.com/datalab/most-police-dont-live-in-the-cities-they-serve/</a></td>
 </tr>
@@ -1132,6 +1523,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The Last 10 Weeks Of 2016 Campaign Stops In One Handy Gif</td>
 <td align="left">2016 Election</td>
 <td align="left">Matthew Conlen</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2016-12-16</td>
@@ -1144,6 +1536,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Carl Bialik</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-05-11</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/sitting-presidents-give-way-more-commencement-speeches-than-they-used-to/" class="uri">http://fivethirtyeight.com/features/sitting-presidents-give-way-more-commencement-speeches-than-they-used-to/</a></td>
 </tr>
@@ -1154,82 +1547,124 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-04-15</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/do-pulitzers-help-newspapers-keep-readers/" class="uri">http://fivethirtyeight.com/datalab/do-pulitzers-help-newspapers-keep-readers/</a></td>
 </tr>
 <tr class="even">
+<td align="left"><code>quasi_winshares</code></td>
+<td align="left">The Twins’ Magical Run Will Likely Go Through The Yankees. (Because Of Course.)</td>
+<td align="left">MLB</td>
+<td align="left">Neil Paine</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">2019-09-27</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/the-yankees-always-have-the-twins-number-will-this-postseason-be-different/" class="uri">https://fivethirtyeight.com/features/the-yankees-always-have-the-twins-number-will-this-postseason-be-different/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>raptor_by_player</code></td>
+<td align="left">Introducing RAPTOR, Our New Metric For The Modern NBA</td>
+<td align="left">NBA</td>
+<td align="left">Nate Silver</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">2019-10-10</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/introducing-raptor-our-new-metric-for-the-modern-nba/" class="uri">https://fivethirtyeight.com/features/introducing-raptor-our-new-metric-for-the-modern-nba/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>raptor_by_team</code></td>
+<td align="left">Introducing RAPTOR, Our New Metric For The Modern NBA</td>
+<td align="left">NBA</td>
+<td align="left">Nate Silver</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Yes</td>
+<td align="left">2019-10-10</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/introducing-raptor-our-new-metric-for-the-modern-nba/" class="uri">https://fivethirtyeight.com/features/introducing-raptor-our-new-metric-for-the-modern-nba/</a></td>
+</tr>
+<tr class="odd">
 <td align="left"><code>ratings</code></td>
 <td align="left">Al Gore’s New Movie Exposes The Big Flaw In Online Movie Ratings</td>
 <td align="left">Movies</td>
 <td align="left">Dhrumil Mehta</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
+<td align="left">Yes</td>
 <td align="left">2017-09-07</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/al-gores-new-movie-exposes-the-big-flaw-in-online-movie-ratings/" class="uri">https://fivethirtyeight.com/features/al-gores-new-movie-exposes-the-big-flaw-in-online-movie-ratings/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>riddler_castles</code></td>
 <td align="left">Can You Rule Riddler Nation?</td>
 <td align="left">The Riddler</td>
 <td align="left">Oliver Roeder</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-02-03</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/can-you-rule-riddler-nation/" class="uri">https://fivethirtyeight.com/features/can-you-rule-riddler-nation/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>riddler_castles2</code></td>
 <td align="left">The Battle For Riddler Nation, Round 2</td>
 <td align="left">The Riddler</td>
 <td align="left">Oliver Roeder</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-05-19</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/" class="uri">http://fivethirtyeight.com/features/the-battle-for-riddler-nation-round-2/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>riddler_pick_lowest</code></td>
 <td align="left">Pick A Number, Any Number</td>
 <td align="left">The Riddler</td>
 <td align="left">Oliver Roeder</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-07-28</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/pick-a-number-any-number/" class="uri">https://fivethirtyeight.com/features/pick-a-number-any-number/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>russia_investigation</code></td>
 <td align="left">Is The Russia Investigation Really Another Watergate?</td>
 <td align="left"></td>
 <td align="left">Amelia Thomson-DeVeaux</td>
 <td align="left">Julia Wolfe</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2019-03-22</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/russia-investigation/" class="uri">https://projects.fivethirtyeight.com/russia-investigation/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>san_andreas</code></td>
 <td align="left">The Rock Isn’t Alone: Lots Of People Are Worried About ‘The Big One’</td>
 <td align="left">Movies</td>
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-06-02</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/the-rock-isnt-alone-lots-of-people-are-worried-about-the-big-one/" class="uri">http://fivethirtyeight.com/datalab/the-rock-isnt-alone-lots-of-people-are-worried-about-the-big-one/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>sandy_311</code></td>
 <td align="left">The (Very) Long Tail Of Hurricane Recovery</td>
 <td align="left"></td>
 <td align="left">Julia Wolfe</td>
 <td align="left">Oliver Roeder</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">NA</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/sandy-311/" class="uri">https://projects.fivethirtyeight.com/sandy-311/</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>senate_national_forecast</code></td>
 <td align="left">Senate forecasts</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
@@ -1237,15 +1672,27 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">2018-11-06</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/2018-midterm-election-forecast/senate/" class="uri">https://projects.fivethirtyeight.com/2018-midterm-election-forecast/senate/</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>senate_polls</code></td>
 <td align="left">Early Senate Polls Have Plenty to Tell Us About November</td>
 <td align="left">2014 Midterms</td>
 <td align="left">Harry Enten</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2014-04-16</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/" class="uri">http://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>senate_seat_forecast</code></td>
+<td align="left">Senate forecasts</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2018-11-06</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/2018-midterm-election-forecast/senate/" class="uri">https://projects.fivethirtyeight.com/2018-midterm-election-forecast/senate/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>senators</code></td>
@@ -1254,6 +1701,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Oliver Roeder</td>
 <td align="left">Dhrumil Mehta</td>
 <td align="left">Gus Wezerek</td>
+<td align="left">Yes</td>
 <td align="left">2017-10-24</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/" class="uri">https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/</a></td>
 </tr>
@@ -1264,6 +1712,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Jay Boice</td>
 <td align="left">Reuben Fischer-Baum</td>
 <td align="left">Julia Wolfe</td>
+<td align="left"></td>
 <td align="left">2017-12-31</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/global-club-soccer-rankings/" class="uri">https://projects.fivethirtyeight.com/global-club-soccer-rankings/</a></td>
 </tr>
@@ -1274,24 +1723,49 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Jay Boice</td>
 <td align="left">Reuben Fischer-Baum</td>
 <td align="left">Julia Wolfe</td>
+<td align="left">Yes</td>
 <td align="left">2017-12-31</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/soccer-predictions/" class="uri">https://projects.fivethirtyeight.com/soccer-predictions/</a></td>
 </tr>
 <tr class="even">
-<td align="left"><code>state_payrolls</code></td>
+<td align="left"><code>state_index</code></td>
+<td align="left">What America’s Governors Are Talking About</td>
+<td align="left">Governors</td>
+<td align="left">Nathaniel Rakich</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-06-13</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/what-americas-governors-are-talking-about/" class="uri">https://fivethirtyeight.com/features/what-americas-governors-are-talking-about/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>state_info</code></td>
 <td align="left">NA</td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left"><code>state_words</code></td>
+<td align="left">What America’s Governors Are Talking About</td>
+<td align="left">Governors</td>
+<td align="left">Nathaniel Rakich</td>
+<td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-06-13</td>
+<td align="left"><a href="https://fivethirtyeight.com/features/what-americas-governors-are-talking-about/" class="uri">https://fivethirtyeight.com/features/what-americas-governors-are-talking-about/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>steak_survey</code></td>
 <td align="left">How Americans Like Their Steak</td>
 <td align="left">FiveThirtyAte</td>
 <td align="left">Walt Hickey</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2014-05-16</td>
@@ -1304,6 +1778,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Oliver Roeder</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-12-09</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/complete-catalog-curses-deaths-quentin-tarantino-films/" class="uri">http://fivethirtyeight.com/features/complete-catalog-curses-deaths-quentin-tarantino-films/</a></td>
 </tr>
@@ -1312,6 +1787,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Why Some Tennis Matches Take Forever</td>
 <td align="left">Tick Tock</td>
 <td align="left">Carl Bialik</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-06-06</td>
@@ -1324,6 +1800,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Carl Bialik</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-06-06</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/" class="uri">http://fivethirtyeight.com/features/why-some-tennis-matches-take-forever/</a></td>
 </tr>
@@ -1332,6 +1809,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Why Some Tennis Matches Take Forever</td>
 <td align="left">Tick Tock</td>
 <td align="left">Carl Bialik</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-06-06</td>
@@ -1344,6 +1822,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Kevin Cope</td>
 <td align="left">Joshua Fischman</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-03-27</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/for-a-trump-nominee-neil-gorsuchs-record-is-surprisingly-moderate-on-immigration/?ex_cid=538twitter" class="uri">https://fivethirtyeight.com/features/for-a-trump-nominee-neil-gorsuchs-record-is-surprisingly-moderate-on-immigration/?ex_cid=538twitter</a></td>
 </tr>
@@ -1354,6 +1833,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Aaron Bycoffe</td>
 <td align="left">Dhrumil Mehta</td>
 <td align="left">Nate Silver</td>
+<td align="left"></td>
 <td align="left">NA</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/trump-approval-ratings/" class="uri">https://projects.fivethirtyeight.com/trump-approval-ratings/</a></td>
 </tr>
@@ -1364,12 +1844,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Aaron Bycoffe</td>
 <td align="left">Dhrumil Mehta</td>
 <td align="left">Nate Silver</td>
+<td align="left"></td>
 <td align="left">NA</td>
 <td align="left"><a href="https://projects.fivethirtyeight.com/trump-approval-ratings/" class="uri">https://projects.fivethirtyeight.com/trump-approval-ratings/</a></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>trump_lawsuits</code></td>
 <td align="left">MANY</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
@@ -1384,6 +1866,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Nate Silver</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2016-03-30</td>
 <td align="left"><a href="http://fivethirtyeight.com/features/how-donald-trump-hacked-the-media/" class="uri">http://fivethirtyeight.com/features/how-donald-trump-hacked-the-media/</a></td>
 </tr>
@@ -1392,6 +1875,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The World’s Favorite Donald Trump Tweets</td>
 <td align="left">2016 Election</td>
 <td align="left">Leah Libresco</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2016-06-21</td>
@@ -1404,6 +1888,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Gus Wezerek</td>
 <td align="left">Andrea Jones-Rooy</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-09-18</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/" class="uri">https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/</a></td>
 </tr>
@@ -1414,6 +1899,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Gus Wezerek</td>
 <td align="left">Andrea Jones-Rooy</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-09-18</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/" class="uri">https://fivethirtyeight.com/features/what-the-world-thinks-of-trump/</a></td>
 </tr>
@@ -1422,6 +1908,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
 <td align="left">Puerto Rico</td>
 <td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2017-10-12</td>
@@ -1434,6 +1921,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Dhrumil Mehta</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-10-12</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/" class="uri">https://fivethirtyeight.com/features/the-media-really-started-paying-attention-to-puerto-rico-when-trump-did/</a></td>
 </tr>
@@ -1442,6 +1930,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The Media Really Started Paying Attention to Puerto Rico When Trump Did</td>
 <td align="left">Puerto Rico</td>
 <td align="left">Dhrumil Mehta</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2017-10-12</td>
@@ -1454,6 +1943,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Oliver Roeder</td>
 <td align="left">Dhrumil Mehta</td>
 <td align="left">Gus Wezerek</td>
+<td align="left">Yes</td>
 <td align="left">2017-10-24</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/" class="uri">https://fivethirtyeight.com/features/the-worst-tweeter-in-politics-isnt-trump/</a></td>
 </tr>
@@ -1464,6 +1954,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Oliver Roeder</td>
 <td align="left">Brin-Jonathan Butler</td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2017-08-18</td>
 <td align="left"><a href="https://fivethirtyeight.com/features/mayweather-is-defined-by-the-zero-next-to-his-name/" class="uri">https://fivethirtyeight.com/features/mayweather-is-defined-by-the-zero-next-to-his-name/</a></td>
 </tr>
@@ -1472,6 +1963,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">The Most Common Unisex Names In America: Is Yours One Of Them?</td>
 <td align="left"></td>
 <td align="left">Andrew Flowers</td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 <td align="left">2015-06-10</td>
@@ -1484,8 +1976,31 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left">Walt Hickey</td>
 <td align="left"></td>
 <td align="left"></td>
+<td align="left"></td>
 <td align="left">2015-04-20</td>
 <td align="left"><a href="http://fivethirtyeight.com/datalab/weather-forecast-news-app-habits/" class="uri">http://fivethirtyeight.com/datalab/weather-forecast-news-app-habits/</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>wwc_2019_forecasts</code></td>
+<td align="left">2019 Women’s World Cup Predictions</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-07-07</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/2019-womens-world-cup-predictions/" class="uri">https://projects.fivethirtyeight.com/2019-womens-world-cup-predictions/</a></td>
+</tr>
+<tr class="even">
+<td align="left"><code>wwc_2019_matches</code></td>
+<td align="left">2019 Women’s World Cup Predictions</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2019-07-07</td>
+<td align="left"><a href="https://projects.fivethirtyeight.com/2019-womens-world-cup-predictions/" class="uri">https://projects.fivethirtyeight.com/2019-womens-world-cup-predictions/</a></td>
 </tr>
 </tbody>
 </table>
@@ -1541,7 +2056,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </ol></li>
 <li><strong>Tidy data format</strong>:
 <ol style="list-style-type: decimal">
-<li>Whenever possible, save all data frames in “tidy” data format as defined by <span class="citation">@wickham_2014</span>:
+<li>Whenever possible, save all data frames in “tidy” data format as defined by Hadley Wickham:
 <ol style="list-style-type: lower-alpha">
 <li>Each variable forms a column.</li>
 <li>Each observation forms a row.</li>
@@ -1551,6 +2066,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </ol></li>
 </ol>
 <p><strong>Note</strong>: The code used to pre-process the data can be found on the <a href="https://github.com/rudeboybert/fivethirtyeight/tree/master/data-raw">GitHub repository</a> for the package in the <code>process_data_sets.R</code> files. These can serve as data manipulation/wrangling examples and exercises for more advanced students.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The <code>fivethirtyeightdata</code> package is hosted via a <a href="https://CRAN.R-project.org/package=drat/vignettes/DratForPackageAuthors.html" target="_blank"><code>drat</code> repository</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 
 

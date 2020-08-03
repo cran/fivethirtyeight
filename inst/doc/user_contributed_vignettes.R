@@ -1,5 +1,6 @@
-## ----install, eval=FALSE-------------------------------------------------
-#  # install.packages("remotes")
-#  remotes::install_github("rudeboybert/fivethirtyeight", build_vignettes = TRUE)
-#  vignette(package = "fivethirtyeight")
+## ----install, eval=FALSE------------------------------------------------------
+#  install.packages("fivethirtyeightdata",
+#    repos = "https://fivethirtyeightdata.github.io/drat/",
+#    type = "source")
+#  vignette(package = "fivethirtyeightdata")
 
