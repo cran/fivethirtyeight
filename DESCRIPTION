@@ -5,7 +5,7 @@ Description: Datasets and code published by the data journalism website
     'FiveThirtyEight' available at <https://github.com/fivethirtyeight/data>. 
     Note that while we received guidance from editors at 'FiveThirtyEight', this 
     package is not officially published by 'FiveThirtyEight'.
-Version: 0.6.0
+Version: 0.6.1
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7824-306X")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut", comment = c(ORCID = "0000-0003-2820-2547")),
@@ -45,11 +45,11 @@ URL: https://github.com/rudeboybert/fivethirtyeight
 BugReports: https://github.com/rudeboybert/fivethirtyeight/issues
 RoxygenNote: 7.1.1
 Suggests: ggplot2, dplyr, tidyr (>= 1.0.0), readr, tibble, stringr,
-        broom, knitr, rmarkdown, gridExtra, curl, fivethirtyeightdata
+        broom, knitr, rmarkdown, patchwork, fivethirtyeightdata
 Additional_repositories: https://fivethirtyeightdata.github.io/drat
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-08-02 22:00:35 UTC; rudeboybert
+Packaged: 2020-08-04 23:36:50 UTC; rudeboybert
 Author: Albert Y. Kim [aut, cre] (<https://orcid.org/0000-0001-7824-306X>),
   Chester Ismay [aut] (<https://orcid.org/0000-0003-2820-2547>),
   Jennifer Chunn [aut],
@@ -80,4 +80,4 @@ Author: Albert Y. Kim [aut, cre] (<https://orcid.org/0000-0001-7824-306X>),
   Lizette Carpenter [ctb],
   Fatima Keita [ctb]
 Repository: CRAN
-Date/Publication: 2020-08-03 08:50:18 UTC
+Date/Publication: 2020-08-05 09:50:07 UTC

@@ -16,8 +16,7 @@ library(ggplot2)
 library(dplyr)
 library(broom)
 library(knitr)
-library(gridExtra)
-library(curl)
+library(patchwork)
 
 ## ----datascience, echo=FALSE, fig.cap = "Grolemund and Wickham's 'Data/Science Pipeline'", out.width = "75%", fig.align='center'----
 knitr::include_graphics("images/data_science_pipeline.png")
@@ -68,10 +67,10 @@ lm(hate_crimes_per_100k_splc ~ gini_index, data=hate_crimes) %>%
 #  # install.packages("remotes")
 #  remotes::install_github("rudeboybert/fivethirtyeight", build_vignettes = TRUE)
 
-## -----------------------------------------------------------------------------
-library(readr)
-flying_raw <- read_csv("https://bit.ly/2vg8gTf")
-colnames(flying_raw)[1:5]
+## ---- eval=FALSE--------------------------------------------------------------
+#  library(readr)
+#  flying_raw <- read_csv("https://bit.ly/2vg8gTf")
+#  colnames(flying_raw)[1:5]
 
 ## -----------------------------------------------------------------------------
 library(fivethirtyeight)
@@ -95,11 +94,11 @@ ggplot(flying, aes(x = children_under_18, fill = baby)) +
   geom_bar(position = "fill") +
   labs(x = "Do you have children under 18?", y = "Proportion", fill = "Is it rude?")
 
-## -----------------------------------------------------------------------------
-library(readr)
-US_births_1999_2003_raw <- read_csv("https://bit.ly/2vgRFiw")
-US_births_1999_raw <- US_births_1999_2003_raw[US_births_1999_2003_raw$year == 1999, ]
-head(US_births_1999_raw)
+## ---- eval=FALSE--------------------------------------------------------------
+#  library(readr)
+#  US_births_1999_2003_raw <- read_csv("https://bit.ly/2vgRFiw")
+#  US_births_1999_raw <- US_births_1999_2003_raw[US_births_1999_2003_raw$year == 1999, ]
+#  head(US_births_1999_raw)
 
 ## ----US-births, fig.width=16/2.5, fig.height=9/2, fig.align='center', fig.cap="Number of US births in 1999."----
 library(fivethirtyeight)
@@ -114,7 +113,7 @@ head(US_births_1999[which.max(US_births_1999$births), ])
 ## ----bechdel-barplot-orig, echo=FALSE, fig.cap = "Original Bechdel barplot in FiveThirtyEight Article", out.width = "75%", fig.align='center'----
 knitr::include_graphics("images/hickey-bechdel-11.png")
 
-## ---- fig.width=16/2.5, fig.height=9/2.5, fig.align='center', eval=FALSE, fig.cap="Using original bechdel data."----
+## ---- eval=FALSE--------------------------------------------------------------
 #  year_bins <- c("'70-'74", "'75-'79", "'80-'84", "'85-'89", "'90-'94",
 #                 "'95-'99", "'00-'04", "'05-'09", "'10-'13")
 #  
@@ -138,30 +137,39 @@ knitr::include_graphics("images/hickey-bechdel-11.png")
 #    labs(x = "Year", y = "Proportion", fill = "Bechdel Test") +
 #    scale_fill_brewer(palette = "YlGnBu")
 
-## ----bechdel, fig.height=6.5,  fig.width=16/2.5, echo=FALSE, fig.align='center', fig.cap="Barcharts of Bechdel Test results across time."----
-year_bins <- c("'70-'74", "'75-'79", "'80-'84", "'85-'89", "'90-'94", 
-               "'95-'99", "'00-'04", "'05-'09", "'10-'13")
+## ---- eval=FALSE, echo=FALSE--------------------------------------------------
+#  # This code is a repeat of the above code and is hidden from the user. It saves
+#  # a png output of the figure. We do this b/c bit.ly short link redirects are
+#  # unstable in CRAN
+#  year_bins <- c("'70-'74", "'75-'79", "'80-'84", "'85-'89", "'90-'94",
+#                 "'95-'99", "'00-'04", "'05-'09", "'10-'13")
+#  
+#  # Raw data does not order the test results intuitively
+#  bechdel_raw <- read_csv("https://bit.ly/2uD3ls6") %>%
+#    mutate(five_year = cut(year, breaks = seq(1969, 2014, 5), labels = year_bins))
+#  
+#  plot1<- ggplot(bechdel_raw, aes(x = five_year, fill = clean_test)) +
+#    geom_bar(position = "fill", color = "black") +
+#    labs(x = "Year", y = "Proportion", fill = "Bechdel Test",
+#         title = "Using raw data") +
+#    scale_fill_brewer(palette="YlGnBu")
+#  
+#  # Package data has intuitive hierarchical ordering of bechdel test
+#  bechdel <- bechdel %>%
+#    mutate(five_year = cut(year, breaks = seq(1969, 2014, 5), labels = year_bins))
+#  
+#  plot2 <- ggplot(bechdel, aes(x = five_year, fill = clean_test)) +
+#    geom_bar(position = "fill", color = "black") +
+#    labs(x = "Year", y = "Proportion", fill = "Bechdel Test",
+#         title = "Using fivethirtyeight package data")+
+#    scale_fill_brewer(palette="YlGnBu")
+#  
+#  bechdel_plot <- plot1 / plot2
+#  
+#  ggsave("vignettes/images/bechdel.png", plot = bechdel_plot, height = 6.5, width = 16/2.5)
 
-# Raw data does not order the test results intuitively
-bechdel_raw <- read_csv("https://bit.ly/2uD3ls6") %>%
-  mutate(five_year = cut(year, breaks = seq(1969, 2014, 5), labels = year_bins))
-
-plot1<- ggplot(bechdel_raw, aes(x = five_year, fill = clean_test)) +
-  geom_bar(position = "fill", color = "black") +
-  labs(x = "Year", y = "Proportion", fill = "Bechdel Test", 
-       title = "Using raw data") +
-  scale_fill_brewer(palette="YlGnBu")
-
-# Package data has intuitive hierarchical ordering of bechdel test
-bechdel <- bechdel %>%
-  mutate(five_year = cut(year, breaks = seq(1969, 2014, 5), labels = year_bins))
-
-plot2 <- ggplot(bechdel, aes(x = five_year, fill = clean_test)) +
-  geom_bar(position = "fill", color = "black") +
-  labs(x = "Year", y = "Proportion", fill = "Bechdel Test", 
-       title = "Using fivethirtyeight package data")+
-  scale_fill_brewer(palette="YlGnBu")
-grid.arrange(plot1, plot2, nrow=2)
+## ----bechdel, out.width= "100%", echo=FALSE, fig.align='center', fig.cap="Barcharts of Bechdel Test results across time."----
+knitr::include_graphics("images/bechdel.png")
 
 ## ---- fig.width=16/2.5, fig.height=9/2----------------------------------------
 library(dplyr)
