@@ -5,7 +5,7 @@ Description: Datasets and code published by the data journalism website
     'FiveThirtyEight' available at <https://github.com/fivethirtyeight/data>. 
     Note that while we received guidance from editors at 'FiveThirtyEight', this 
     package is not officially published by 'FiveThirtyEight'.
-Version: 0.6.1
+Version: 0.6.2
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7824-306X")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut", comment = c(ORCID = "0000-0003-2820-2547")),
@@ -49,7 +49,7 @@ Suggests: ggplot2, dplyr, tidyr (>= 1.0.0), readr, tibble, stringr,
 Additional_repositories: https://fivethirtyeightdata.github.io/drat
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-08-04 23:36:50 UTC; rudeboybert
+Packaged: 2021-10-07 12:58:41 UTC; rudeboybert
 Author: Albert Y. Kim [aut, cre] (<https://orcid.org/0000-0001-7824-306X>),
   Chester Ismay [aut] (<https://orcid.org/0000-0003-2820-2547>),
   Jennifer Chunn [aut],
@@ -80,4 +80,4 @@ Author: Albert Y. Kim [aut, cre] (<https://orcid.org/0000-0001-7824-306X>),
   Lizette Carpenter [ctb],
   Fatima Keita [ctb]
 Repository: CRAN
-Date/Publication: 2020-08-05 09:50:07 UTC
+Date/Publication: 2021-10-07 13:40:02 UTC

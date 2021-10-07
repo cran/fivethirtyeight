@@ -2,14 +2,13 @@
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "Figures/",
   warning = FALSE,
   message = FALSE
 )
 scale_fill_discrete <- function(...) scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
 
 ## ----setup, include=FALSE-----------------------------------------------------
-knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE, fig.height = 4)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
 library(fivethirtyeight)
 # library(tidyverse)
 library(ggplot2)
